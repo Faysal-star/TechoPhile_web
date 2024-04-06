@@ -103,6 +103,22 @@ input[type='text']:focus {
 	outline: none;
 }
 
+input[type='password'] {
+	font-size: 16px;
+	padding: 5px;
+	height: 40px;
+	width: 100%;
+	background-color: #0000002d;
+	border: none;
+	color: white;
+    margin-bottom: 20px;
+    margin-top: 7px;
+}
+
+input[type='password']:focus {
+	outline: none;
+}
+
 .submitBtn {
 	margin-top: 20px;
 	width: 100%;
@@ -126,4 +142,10 @@ a{
 
 a:visited{
     color: var(--text-light-blue);
+}
+
+.errTxt{
+	color: rgb(247, 87, 87);
+	margin-top: -20px;
+	font-size: 12px;
 }

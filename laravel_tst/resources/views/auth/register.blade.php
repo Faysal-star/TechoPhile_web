@@ -12,7 +12,7 @@
         <h1>Welcome to <br> <span class='color'>TechoPhile</span></h1>
         
         <div class="form">
-            <form action="/" method="post">
+            <form action="{{ route('register.save') }}" method="post">
                 @csrf
             
                 <label for="name">Name</label>
@@ -31,14 +31,14 @@
                 <br>
                 <label for="password">Password</label>
                 <br>
-                <input type="text" name="password" id="password" placeholder="Enter password">
+                <input type="password" name="password" id="password" placeholder="Enter password">
                 @error('password')
                     <p class="errTxt">{{ $message }}</p>
                 @enderror
                 <br>
                 <label for="password2">Confirm Password</label>
                 <br>
-                <input type="text" name="password_confirmation" id="password2" placeholder="Enter password">
+                <input type="password" name="password_confirmation" id="password2" placeholder="Enter password">
                 @error('password_confirmation')
                     <p class="errTxt">{{ $message }}</p>
                 @enderror
