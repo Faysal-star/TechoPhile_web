@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -9,8 +10,10 @@ class PostController extends Controller
 {
     public function show(Post $post){
         // dd($post) ;
+        // dd($post->comment) ;
         return view('posts/singlePost' , [
-            'post' => $post
+            'post' => $post,
+            'comments' => $post->comment
         ]);
     }
 
@@ -46,12 +49,27 @@ class PostController extends Controller
             'tags' => 'required',
             'body' => 'required'
         ]);
-        
+
         $attributes['user_id'] = auth()->id();
 
         Post::create($attributes) ;
 
         return redirect('/home')->with('success' , 'Your post has been created!') ;
+    }
+
+    public function comment(){
+        $attributes = request()->validate([
+            'post_id' => 'required',
+            'body' => 'required'
+        ]);
+
+        $attributes['user_id'] = auth()->id();
+        $postId = $attributes['post_id'];
+
+        Comment::create($attributes) ;
+
+        return redirect('/post/'.$postId) ;
+
     }
 
 

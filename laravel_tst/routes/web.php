@@ -28,6 +28,8 @@ Route::group(['middleware' => 'auth'] , function(){
     Route::post('/uploadPic' , [PostController::class , 'upload'])->name('upload.pic');
 
     Route::post('/store' , [PostController::class , 'store']) ;
+
+    Route::post('/comment' , [PostController::class , 'comment']) ;
     
     Route::get('/post/{post}' , [PostController::class  , 'show'])->where('id' , '[0-9]+') ;
 });

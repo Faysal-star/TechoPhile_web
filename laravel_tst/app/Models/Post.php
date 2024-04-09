@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Comment;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Post extends Model
 {
@@ -19,5 +20,9 @@ class Post extends Model
         if($filters['tag'] ?? false){
             $query->where('tags' , 'like' , '%'.request('tag').'%') ; 
         }
+    }
+
+    public function comment(){
+        return $this->hasMany(Comment::class);
     }
 }

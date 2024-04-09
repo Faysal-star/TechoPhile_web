@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use App\Models\Post;
+use App\Models\Comment;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -53,5 +54,9 @@ class User extends Authenticatable
 
     public function post(){
         return $this->hasMany(Post::class) ;
+    }
+
+    public function comment(){
+        return $this->hasMany(Comment::class);
     }
 }
