@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use App\Models\Post;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -48,5 +49,9 @@ class User extends Authenticatable
         return new Attribute(
             get: fn ($value) => ["user" , "admin"][$value],
         ) ;
+    }
+
+    public function post(){
+        return $this->hasMany(Post::class) ;
     }
 }

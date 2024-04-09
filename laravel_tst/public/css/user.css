@@ -1,0 +1,95 @@
+:root {
+	--dark-color-a: #667aff;
+	--dark-color-b: #7386ff;
+	--light-color: #e6e9ff;
+	--success-color: #5cb85c;
+	--error-color: #d9534f;
+	--bg-dark : #111111;
+	--bg-dark2: #101418;
+	--bg-dark3: #0c111f;
+	--bg-dark4: #0c1222;
+	--bg-dark5: #234181 ;
+	--bg-wild-blue-yonder: hsla(216, 33%, 68%, 1);
+	--bg-carolina-blue: #0ea6ec;
+	--bg-prussian-blue: hsla(216, 33%, 20%, 1);
+	--bg-oxford-blue: #131b30;
+	--bg-oxford-blue-2: #0f1729;
+  
+	--text-white: hsla(0, 0%, 100%, 1);
+	--text-alice-blue: hsla(216, 100%, 95%, 1);
+	--text-columbia-blue: hsla(199, 69%, 84%, 1);
+	--text-wild-blue-yonder: hsla(216, 33%, 68%, 1);
+	--text-carolina-blue: #0ea6ec;
+	--text-light-blue: #07a8ed ;
+	--text-shadow-blue: hsla(217, 24%, 59%, 1);
+	--text-slate-gray: hsla(217, 17%, 48%, 1);
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+	background: var(--light-color);
+	background: var(--bg-dark4) ;
+    color: white;
+	display: flex ;
+	justify-content: center;
+    min-height: 100vh;
+    min-width: 100vw;
+	overflow-x: hidden;
+}
+
+nav{
+    background: var(--bg-carolina-blue);
+    width: 100vw;
+    height: 100px;
+    padding: 10px;
+}
+
+
+.postCard{
+	width: 600px;
+	border:1px solid rgba(255, 255, 255, 0.397) ;
+	background-color: #ffffff1a;
+	border-radius: 10px;
+	margin: 20px auto;
+	padding: 10px;
+}
+
+.postCard img{
+	max-width: 100%;
+	max-height: 500px;
+	object-fit: contain;
+}
+
+.postCard a{
+	text-decoration: none;
+	color: var(--text-alice-blue);
+	display: inline-block;
+	margin-bottom: 10px;
+}
+
+.postTags{
+	display: flex;
+	list-style: none;	
+	margin-bottom: 8px;
+}
+
+.postTags li{
+	border-radius: 5px;
+	background-color: #2761ff6c;
+	margin: 0px 5px;
+	font-size: 10px;
+	padding: 2px 5px;
+}
+
+.postTags li a{
+	text-decoration: none;
+	padding: 0;
+	line-height: 0;
+}

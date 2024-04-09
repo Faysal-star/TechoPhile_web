@@ -29,4 +29,23 @@ class AuthController extends Controller
 
 
     }
+
+    public function login(){
+        return view('auth/login') ;
+    }
+
+    public function loginAction(){
+        $attributes = request()->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+
+        if(auth()->attempt($attributes)){
+            request()->session()->regenerate();
+            return redirect()->route('home');
+        }
+
+        return back()->withErrors(['email' => 'Your provided credentials could not be verified!']);
+   
+    }
 }

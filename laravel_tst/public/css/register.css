@@ -8,6 +8,7 @@
 	--bg-dark2: #101418;
 	--bg-dark3: #0c111f;
 	--bg-dark4: #0c1222;
+	--bg-dark5: #234181 ;
 	--bg-wild-blue-yonder: hsla(216, 33%, 68%, 1);
 	--bg-carolina-blue: #0ea6ec;
 	--bg-prussian-blue: hsla(216, 33%, 20%, 1);
@@ -34,7 +35,7 @@ body {
 	font-family: 'Roboto', sans-serif;
 	font-size: 16px;
 	background: var(--light-color);
-	background-color: var(--bg-dark4);
+	background: linear-gradient(var(--bg-dark4) 50% , var(--bg-dark5)) ;
     color: white;
 	display: flex ;
 	justify-content: center;
@@ -84,7 +85,7 @@ form{
 	color: #fff;
 	border-radius: 10px;
 
-	border: 1px solid var(--dark-color-a);
+	border: 1px solid var(--text-light-blue);
 }
 
 input[type='text'] {
@@ -93,7 +94,8 @@ input[type='text'] {
 	height: 40px;
 	width: 100%;
 	background-color: #0000002d;
-	border: none;
+	border: 1px solid #5e5e5eaa;
+	border-radius: 5px;
 	color: white;
     margin-bottom: 20px;
     margin-top: 7px;
@@ -109,7 +111,8 @@ input[type='password'] {
 	height: 40px;
 	width: 100%;
 	background-color: #0000002d;
-	border: none;
+	border: 1px solid #5e5e5eaa;
+	border-radius: 5px;
 	color: white;
     margin-bottom: 20px;
     margin-top: 7px;
