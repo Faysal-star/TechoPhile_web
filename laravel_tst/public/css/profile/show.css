@@ -1,0 +1,362 @@
+:root {
+	--dark-color-a: #667aff;
+	--dark-color-b: #7386ff;
+	--light-color: #e6e9ff;
+	--success-color: #5cb85c;
+	--error-color: #d9534f;
+	--bg-dark : #111111;
+	--bg-dark2: #101418;
+	--bg-dark3: #0c111f;
+	--bg-dark4: #0c1222;
+	--bg-dark5: #234181 ;
+	--bg-wild-blue-yonder: hsla(216, 33%, 68%, 1);
+	--bg-carolina-blue: #0ea6ec;
+	--bg-prussian-blue: hsla(216, 33%, 20%, 1);
+	--bg-oxford-blue: #131b30;
+	--bg-oxford-blue-2: #0f1729;
+  
+	--text-white: hsla(0, 0%, 100%, 1);
+	--text-alice-blue: hsla(216, 100%, 95%, 1);
+	--text-columbia-blue: hsla(199, 69%, 84%, 1);
+	--text-wild-blue-yonder: hsla(216, 33%, 68%, 1);
+	--text-carolina-blue: #0ea6ec;
+	--text-light-blue: #07a8ed ;
+	--text-shadow-blue: hsla(217, 24%, 59%, 1);
+	--text-slate-gray: hsla(217, 17%, 48%, 1);
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+
+body{
+    background-color: var(--bg-dark4);
+    overflow-x: hidden;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    /* line-height: 1.6; */
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    min-height: 100vh;
+    min-width: 100vw;
+}
+
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: 1200px;
+    width: 100%;
+    height: 100%;
+}
+
+/* .main img{
+    max-width: 100%;
+    object-fit: contain;
+    height: auto;
+}  */
+
+.upperPart{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 50vh;
+    /* border: 1px solid white; */
+    border-radius: 15px;
+    box-shadow:  -10px -10px 10px #080808,
+                10px 10px 15px #1b2647;
+}
+
+ .cover{
+    width: 100%;
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid red; */
+    overflow: hidden;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.cover img{
+    width: 100%;
+    height: 100%;
+    /* max-height: 100%; */
+    object-fit: cover;
+}
+
+.profile{
+    width: 100%;
+    height: 30%;
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* border: 1px solid blue; */
+    padding-left: 50px;
+}
+
+.profile img{
+    width: 155px;
+    height: 155px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 30px;
+    transform: translateY(-20%);
+    border: 6px solid var(--bg-dark4);
+} 
+
+.details{
+    margin-top: 10px;
+}
+
+.follow{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-shadow-blue);
+}
+
+.following{
+    margin-left: 20px;
+}
+
+.name{
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.email{
+    font-size: .9rem;
+    font-weight: 400;
+    margin-bottom: 10px;
+    color: var(--text-shadow-blue);
+}
+
+.edit{
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    margin-left: auto;
+    margin-right: 50px;
+    margin-bottom: 30px;
+}
+
+.editBtn{
+    background-color: transparent;
+    border: 1px solid var(--bg-carolina-blue);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all .2s;
+}
+
+.editBtn:hover{
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    box-shadow: 4px 4px 7px #31e0ff80;
+    color: var(--bg-carolina-blue);
+}
+
+.editBtn i{
+    margin-right: 5px;
+    color: var(--bg-carolina-blue);
+}
+
+.line{
+    width: 100%;
+    height: 1px;
+    background-color: var(--bg-carolina-blue);
+    margin-top: 20px;
+}
+
+
+/* Posts  */
+.post{
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    flex-direction: column;
+    border: 1px solid rgba(255, 255, 255, 0.11);
+    border-radius: 5px;
+    box-shadow:  -5px -5px 5px #080808,
+                5px 5px 5px #1b2647;
+    margin-bottom: 30px;
+    padding: 10px;
+}
+
+.postHeader{
+    display: flex;
+    align-items: center;
+    /* padding: 10px 20px; */
+    width: 100%;
+    border-bottom: 1px solid #0ea6ec;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+.nameP{
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.time{
+    font-size: .8rem;
+    font-weight: 400;
+    color: var(--text-shadow-blue);
+}
+
+.proPic{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.proPic img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #0ea6ec;
+}
+
+.postContent a{
+    color: rgb(211, 230, 248);
+    font-weight: 500;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+.postContent{
+    margin-bottom: 10px;
+}
+
+.tags{
+    display: flex;
+    margin-bottom: 8px;
+}
+
+.tag{
+    background-color: #5152535d ;
+    color: #2f7ac5;
+    padding: 2px 7px;
+    border-radius: 5px;
+    font-size: .8rem;
+    font-weight: 500;
+    margin-right: 7px;
+    text-decoration: none;
+}
+
+/* lowerpart */
+
+.lowerPart{
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    width: 100%;
+    padding: 10px 20px;
+    margin-top: 50px;
+}
+
+.left{
+    display: flex;
+    /* align-items: center; */
+    flex-direction: column;
+    /* border: 1px solid red; */
+    width: 30%;
+    height: fit-content;
+    height: max-content;
+    padding: 25px;
+    line-height: 1.5rem;
+    box-shadow: -10px -10px 10px #080808,
+                10px 10px 10px #1b2647;
+
+}
+
+.bio{
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.infoP{
+    margin-bottom: 10px;
+}
+
+.infoP a{
+    color: white;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.cityP i{
+    color: #74b9ff;
+}
+
+.addressP i{
+    color: #e74c3c;
+}
+
+.phoneP i{
+    color: #16a085;
+}
+
+.githubP i{
+    color: white;
+}
+
+.twitterP i{
+    color: #1da0f2;
+}
+
+.linkedinP i{
+    color: #0a66c2;
+}
+
+.facebookP i{
+    color: #4267B2;
+}
+
+.infoP i{
+    margin-right: 10px;
+    font-size: 1.1rem;
+
+}
+
+
+.right{
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+    /* border: 1px solid blue; */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProfileController;
+use Symfony\Component\HttpKernel\Profiler\Profile;
 
 Route::get('/', function () {
     return view('welcome');
@@ -32,4 +34,20 @@ Route::group(['middleware' => 'auth'] , function(){
     Route::post('/comment' , [PostController::class , 'comment']) ;
     
     Route::get('/post/{post}' , [PostController::class  , 'show'])->where('id' , '[0-9]+') ;
+
+    Route::get('/chatLogin', function(){
+        return view('chat.index') ;
+    });
+    Route::get('/chatRoom', function(){
+        return view('chat.chat') ;
+    });
+
+    Route::post('/profile/{profile}/follow' , [ProfileController::class , 'follow'])->where('id' , '[0-9]+')->name('profile.follow') ;
+
+    Route::delete('/profile/{profile}/unfollow' , [ProfileController::class , 'unfollow'])->where('id' , '[0-9]+')->name('profile.unfollow') ;
+
+
+    Route::get('/profile/{profile}' , [ProfileController::class , 'show'])->where('id' , '[0-9]+') ;
+
+    
 });

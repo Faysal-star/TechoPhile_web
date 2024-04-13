@@ -16,24 +16,22 @@
             <form action="/store" method="post">
                 @csrf
     
-                <label for="title"> Title </label>
-                <br>
+                <label for="title"> Title </label> 
                 <input type="text" name="title" id="title"
                 value="{{old('title')}}">
-                <br>
                 @error('title')
                         <p class="errText">{{ $message }}</p>
                 @enderror
     
-                <label for="tags"> Tags </label><br>
+                <label for="tags"> Tags </label>
                 <input type="text" name="tags" id="tags"
-                value="{{old('tags')}}"><br>
+                value="{{old('tags')}}">
     
                 @error('tags')
                         <p class="errText">{{ $message }}</p>
                 @enderror
 
-                <label for="body">Description</label><br>
+                <label for="body">Description</label> <br>
                 <textarea class="body" id="body" name="body"
                 rows="10" cols="50">
                 </textarea>

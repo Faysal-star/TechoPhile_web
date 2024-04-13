@@ -23,6 +23,12 @@ class AuthController extends Controller
 
         $user = User::create($attributes);
 
+        $profile = $user->profile()->create([
+            'user_id' => $user->id,
+            'name' => $attributes['name'],
+            'email' => $attributes['email']
+        ]);
+
         // auth()->login($user);
 
         return redirect()->route('login') ;

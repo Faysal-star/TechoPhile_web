@@ -1,3 +1,145 @@
+:root {
+	--dark-color-a: #667aff;
+	--dark-color-b: #7386ff;
+	--light-color: #e6e9ff;
+	--success-color: #5cb85c;
+	--error-color: #d9534f;
+	--bg-dark : #111111;
+	--bg-dark2: #101418;
+	--bg-dark3: #0c111f;
+	--bg-dark4: #0c1222;
+	--bg-dark5: #234181 ;
+	--bg-wild-blue-yonder: hsla(216, 33%, 68%, 1);
+	--bg-carolina-blue: #0ea6ec;
+	--bg-prussian-blue: hsla(216, 33%, 20%, 1);
+	--bg-oxford-blue: #131b30;
+	--bg-oxford-blue-2: #0f1729;
+  
+	--text-white: hsla(0, 0%, 100%, 1);
+	--text-alice-blue: hsla(216, 100%, 95%, 1);
+	--text-columbia-blue: hsla(199, 69%, 84%, 1);
+	--text-wild-blue-yonder: hsla(216, 33%, 68%, 1);
+	--text-carolina-blue: #0ea6ec;
+	--text-light-blue: #07a8ed ;
+	--text-shadow-blue: hsla(217, 24%, 59%, 1);
+	--text-slate-gray: hsla(217, 17%, 48%, 1);
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
 .ck-editor__editable_inline{
     height: 350px;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    background: var(--light-color);
+    /* background: linear-gradient(var(--bg-dark4) 50% , var(--bg-dark5)); */
+    background: var(--bg-dark4);
+    /* color: white; */
+    display: flex ;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    min-width: 100vw;
+    overflow-x: hidden;
+}
+
+label{
+    color: white;
+}
+
+.createMain{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    max-width: 1200px;
+    width: 100%;
+    /* border: 1px solid red; */
+}
+
+.createMain h2{
+    margin-top: 20px;
+    color: var(--text-light-blue);
+    font-size: 35px;
+}
+
+.createForm{
+    width: 100%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+    /* border: 1px solid rgb(0, 174, 255); */
+}
+
+.createForm form{
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    flex-direction: column;
+    /* border: 1px solid red; */
+}
+
+.createForm form input[type="text"]{
+    width: 100%;
+    padding: 10px;
+    /* margin: 10px 0; */
+    margin-top: 7px;
+    margin-bottom: 25px;
+    border: none;
+    border-bottom: 1px solid var(--text-light-blue);
+    background: #ffffff1a;
+    color: #fff;
+}
+
+.createForm form input[type="text"]:focus{
+    outline: none;
+}
+
+/* Ckeditor5 dark mode */
+.ck-reset_all :not(.ck-reset_all-excluded *), .ck.ck-reset_all{
+    color: var(--bg-carolina-blue) !important;
+    background: #2423232d !important;
+    border: 1px solid #00000000 !important;
+}
+
+/* .ck.ck-editor__main>.ck-editor__editable:not(.ck-focused){
+    background: #000000 !important;
+    border: 1px solid #00000000 !important;
+    color: white !important;
+} */
+
+.ck-rounded-corners .ck.ck-editor__main>.ck-editor__editable, .ck.ck-editor__main>.ck-editor__editable.ck-rounded-corners{
+    background: #191d22 !important;
+    border: 1px solid #00000000 !important;
+    color: white !important;
+}
+
+form button{
+    padding: 10px 20px;
+    background: var(--bg-carolina-blue);
+    border: 1px solid var(--bg-carolina-blue);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+    font-size: 15px;
+}
+
+form button:hover{
+    background: transparent;
+    border: 1px solid var(--bg-carolina-blue);
+    color: var(--bg-carolina-blue);
 }
