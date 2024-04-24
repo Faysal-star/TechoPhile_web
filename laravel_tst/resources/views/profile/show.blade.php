@@ -139,27 +139,15 @@
             </div>
 
             <div class="right">
-                <div class="post">
-                    <div class="postHeader">
-                        <div class="proPic">
-                            <img src="{{asset('images/profile.jpg')}}" alt="profile">
-                        </div>
-                        <div class="otherDetails">
-                            <p class="nameP">John Doe</p>
-                            <p class="time">2 hours ago</p>
-                        </div>
-                    </div>
-                    <div class="postContent">
-                        <a href="/" class="postTitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, reiciendis.</a>
-                    </div>
-                    <div class="postFooter">
-                        <div class="tags">
-                            <a href="/" class="tag">tag1</a>
-                            <a href="/" class="tag">tag2</a>
-                            <a href="/" class="tag">tag3</a>
-                        </div>
-                    </div>
-                </div>
+                @unless (count($posts) == 0)
+                @foreach ($posts as $post)
+                    {{-- <h2>Post</h2> --}}
+                    <x-post-component :post="$post" />
+                @endforeach
+                
+                @else
+                    <p>No Posts yet</p>
+                @endunless
             </div>
         </div>
     </div>

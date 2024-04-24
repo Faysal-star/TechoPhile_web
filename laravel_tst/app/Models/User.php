@@ -65,4 +65,14 @@ class User extends Authenticatable
         return $this->hasOne(Profile::class);
     }
 
+    public function likes(){
+        return $this->belongsToMany(Post::class, 'likes', 'user_id', 'post_id')
+                    ->wherePivot('type', '=' , 'like');
+    }
+
+    public function dislikes(){
+        return $this->belongsToMany(Post::class, 'likes', 'user_id', 'post_id')
+                    ->wherePivot('type', '=' , 'dislike');
+    }
+
 }

@@ -25,4 +25,14 @@ class Post extends Model
     public function comment(){
         return $this->hasMany(Comment::class);
     }
+
+    public function likes(){
+        return $this->belongsToMany(User::class, 'likes', 'post_id', 'user_id')
+                    ->wherePivot('type', '=' ,'like');
+    }
+
+    public function dislikes(){
+        return $this->belongsToMany(User::class, 'likes', 'post_id', 'user_id')
+                    ->wherePivot('type', '=' , 'dislike');
+    }
 }

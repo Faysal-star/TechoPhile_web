@@ -51,8 +51,13 @@ nav{
     padding: 10px;
 }
 
+.postsDiv{
+	display: flex;
+    flex-direction: column;
+    width: 65%;
+}
 
-.postCard{
+/* .postCard{
 	width: 600px;
 	border:1px solid rgba(255, 255, 255, 0.397) ;
 	background-color: #ffffff1a;
@@ -92,4 +97,7 @@ nav{
 	text-decoration: none;
 	padding: 0;
 	line-height: 0;
-}
+} */
+
+
+

@@ -3,25 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{asset('css/home.css')}}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <link rel="shortcut icon" href="{{asset('images/app_logo.png')}}" type="image/x-icon">
     <title>@yield('title')</title>
-    <link rel="stylesheet" href="{{asset('css/user.css')}}">
 </head>
 <body>
-    <div class="whole">
-        <nav>
-            <h2>Welcome {{auth()->user()->name}}</h2>
-            @if(auth()->user()->type == 'user') 
-                <h3>You can't view this bro</h3>
+    <nav>
+        <div class="logo">
+            <img src="{{asset('images/app_logo.png')}}" alt="">
+            <h2>Techo<span class="colored">Phile</span></h2>
+        </div>
+        <div class="menu">
+            <ul>
+                <li>
+                    <a href="/">
+                        <i class="fas fa-home"></i>
+                        <p class="ltext">Home</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/">
+                        <i class="fas fa-user-friends"></i>
+                        <p class="ltext">Follow</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/">
+                        <i class="fas fa-comment-alt"></i>
+                        <p class="ltext">Chat</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/">
+                        <i class="fas fa-bell"></i>
+                        <p class="ltext">Activity</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="me">
+            <a href="">{{auth()->user()->name}}</a>
+            {{-- <img src="./images/profile.jpg" alt=""> --}}
+            @if (auth()->user()->profile->image)
+                <img src="{{asset('storage/images/'.auth()->user()->profile->image)}}" alt="profile">
             @else
-                <h3>Admin panel</h3>
+                <img src="{{asset('images/profile.jpg')}}" alt="profile">
             @endif
-        </nav>
+        </div>
+    </nav>
 
-        <main>
-            @yield('contents')
-        </main>
-    </div>
-    
+    @yield('contents')
+
 </body>
 </html>

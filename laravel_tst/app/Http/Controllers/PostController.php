@@ -5,15 +5,22 @@ namespace App\Http\Controllers;
 use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class PostController extends Controller
 {
     public function show(Post $post){
         // dd($post) ;
         // dd($post->comment) ;
+        // dd($post->dislikes->count()) ;
+        // dd($post->likes->count()) ;
+        // dd($post->comment->count()) ; 
         return view('posts/singlePost' , [
             'post' => $post,
-            'comments' => $post->comment
+            'comments' => $post->comment,
+            'likes' => $post->likes->count(),
+            'dislikes' => $post->dislikes->count(),
+            'commentsCount' => $post->comment->count()
         ]);
     }
 
@@ -72,5 +79,33 @@ class PostController extends Controller
 
     }
 
+    public function like(Post $post){
+        if(auth()->user()->likes->contains($post)){
+            auth()->user()->likes()->detach($post->id);
+        }
+        else if(auth()->user()->dislikes->contains($post)){
+            auth()->user()->dislikes()->detach($post->id);
+            auth()->user()->likes()->attach($post->id, ['type' => 'like']);
+        }
+        else{
+            auth()->user()->likes()->attach($post->id, ['type' => 'like']);
+        }
 
+        return back();
+    }
+
+    public function dislike(Post $post){
+        if(auth()->user()->dislikes->contains($post)){
+            auth()->user()->dislikes()->detach($post->id);
+        }
+        else if(auth()->user()->likes->contains($post)){
+            auth()->user()->likes()->detach($post->id);
+            auth()->user()->dislikes()->attach($post->id, ['type' => 'dislike']);
+        }
+        else{
+            auth()->user()->dislikes()->attach($post->id, ['type' => 'dislike']);
+        }
+        
+        return back();
+    }
 }
