@@ -91,6 +91,17 @@ class PostController extends Controller
             auth()->user()->likes()->attach($post->id, ['type' => 'like']);
         }
 
+        $like_count = $post->likes->count();
+        $dislike_count = $post->dislikes->count();
+        $comments_count = $post->comment->count();
+        $created_at = $post->created_at;
+        $elapsed_day = $created_at->diffInDays(now());
+
+        // dd($like_count, $dislike_count, $comments_count, $elasped_day);
+        $impact_factor = 1 + $like_count * 70 + $comments_count * 70 - $elapsed_day * 2 - $dislike_count * 38;
+        $post->update(['impact_factor' => $impact_factor]);
+        dd($impact_factor);
+
         return back();
     }
 

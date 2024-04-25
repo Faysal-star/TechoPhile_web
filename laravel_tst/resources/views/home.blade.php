@@ -5,6 +5,14 @@
 @section('contents')
 
 <div class="mainHome">
+    <div class="search">
+        <form action="/home">
+            <input type="text" name="search" id="search" placeholder="Search post...">
+            <button type="submit">
+                <i class="fas fa-search"></i>
+            </button>
+        </form>
+    </div>
     <div class="createPost">
         <div class="profile">
             @if (auth()->user()->profile->image)

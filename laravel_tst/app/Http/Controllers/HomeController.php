@@ -8,9 +8,12 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function index(){
-        // dd(request('tag')) ;
+        // dd(request('tags')) ;
+        // dd(request(['tag'])) ;
+        // $posts = Post::latest()->filter(request(['tag']))->get() ;
+        // dd($posts) ;
         return view('home' , [
-            'posts' => Post::latest()->filter(request(['tag']))->get()
+            'posts' => Post::latest()->filter(request(['tag' , 'search']))->get()
         ]) ;
     }
 }

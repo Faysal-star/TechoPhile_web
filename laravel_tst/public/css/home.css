@@ -167,6 +167,68 @@ nav ul li a:hover{
     /* border: 1px solid red; */
 }
 
+.search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    border: 1px solid rgba(255, 255, 255, 0.11);
+    border-radius: 5px;
+    box-shadow:  -5px -5px 5px #080808,
+                5px 5px 5px #1b2647;
+    height: 60px;
+    margin-bottom: 30px;
+}
+
+.search form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.search input{
+    width: 85%;
+    height: 100%;
+    border: none;
+    background-color: transparent;
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 10px;
+    padding-left: 20px;
+}
+
+.search input::placeholder{
+    color: rgba(255, 255, 255, 0.603);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.search input:focus{
+    outline: none;
+}
+
+.search button{
+    width: 15%;
+    background-color: var(--bg-carolina-blue);
+    border: 1px solid var(--bg-carolina-blue);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 0px 5px 5px 0px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all .2s;
+    height: 60px;
+}
+
+.search button:hover{
+    background-color: transparent;
+    color: var(--bg-carolina-blue);
+}
+
+
 .createPost{
     display: flex;
     justify-content: space-around;
@@ -313,7 +375,22 @@ nav ul li a:hover{
     color: cyan !important;
 }
 
+::-webkit-scrollbar {
+    width: 12px;
+}
 
+::-webkit-scrollbar-track {
+    background: var(--bg-dark4);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #014b6e00, #09d6dd);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #0ea6ecb4;
+}
 
 
 

@@ -24,7 +24,7 @@
                 $tags = explode(',' , $post->tags)
             @endphp
             @foreach ($tags as $tag)
-                <a href="/home/?tags={{$tag}}" class="tag">{{$tag}}</a>
+                <a href="/home/?tag={{$tag}}" class="tag">{{$tag}}</a>
             @endforeach
         </div>
         <div class="counts">

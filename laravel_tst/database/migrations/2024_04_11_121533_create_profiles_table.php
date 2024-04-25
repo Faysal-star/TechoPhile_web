@@ -20,9 +20,13 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->string('city')->nullable();
             $table->string('github')->nullable();
+            $table->string('github_link')->nullable();
             $table->string('twitter')->nullable();
+            $table->string('twitter_link')->nullable();
             $table->string('facebook')->nullable();
+            $table->string('facebook_link')->nullable();
             $table->string('linkedin')->nullable();
+            $table->string('linkedin_link')->nullable();
             $table->string('avatar')->nullable();
             $table->text('bio')->nullable();
             $table->string('cover')->nullable();

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('title');
             $table->longText('body');
             $table->string('tags')->nullable();
+            $table->bigInteger('impact_factor')->default(1);
             $table->timestamps();
         });
     }

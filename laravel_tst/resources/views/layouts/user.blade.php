@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
     <link rel="shortcut icon" href="{{asset('images/app_logo.png')}}" type="image/x-icon">
     <title>@yield('title')</title>
+    @yield('CustomCss')
 </head>
 <body>
     <nav>
@@ -17,7 +18,7 @@
         <div class="menu">
             <ul>
                 <li>
-                    <a href="/">
+                    <a href="/home">
                         <i class="fas fa-home"></i>
                         <p class="ltext">Home</p>
                     </a>
@@ -29,13 +30,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/">
+                    <a href="/chatLogin">
                         <i class="fas fa-comment-alt"></i>
                         <p class="ltext">Chat</p>
                     </a>
                 </li>
                 <li>
-                    <a href="/">
+                    <a href="/activity">
                         <i class="fas fa-bell"></i>
                         <p class="ltext">Activity</p>
                     </a>
@@ -43,7 +44,7 @@
             </ul>
         </div>
         <div class="me">
-            <a href="">{{auth()->user()->name}}</a>
+            <a href="/profile/{{auth()->user()->profile->id}}">{{auth()->user()->name}}</a>
             {{-- <img src="./images/profile.jpg" alt=""> --}}
             @if (auth()->user()->profile->image)
                 <img src="{{asset('storage/images/'.auth()->user()->profile->image)}}" alt="profile">
