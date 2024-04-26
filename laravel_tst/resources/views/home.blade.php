@@ -15,11 +15,7 @@
     </div>
     <div class="createPost">
         <div class="profile">
-            @if (auth()->user()->profile->image)
-                <img src="{{asset('storage/images/'.auth()->user()->profile->image)}}" alt="profile">
-            @else
-                <img src="{{asset('images/profile.jpg')}}" alt="profile">
-            @endif
+            <img src={{ auth()->user()->profile->avatar ? asset('storage/'.auth()->user()->profile->avatar) : asset('images/profile.jpg') }} />
         </div> 
         <div class="postDesc">
             <p>Something you want to share ?....</p>

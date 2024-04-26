@@ -10,10 +10,12 @@
 <div class="main">
     <div class="upperPart">
         <div class="cover">
-            <img src="{{asset('images/cover.jpg')}}" alt="cover">
+            {{-- <img src="{{asset('images/cover.jpg')}}" alt="cover"> --}}
+            <img src={{ $profile->cover ? asset('storage/'.$profile->cover) : asset('images/cover.jpg') }} alt="cover">
         </div>
         <div class="profile">
-            <img src="{{asset('images/profile.jpg')}}" alt="profile">
+            {{-- <img src="{{asset('images/profile.jpg')}}" alt="profile"> --}}
+            <img src={{ $profile->avatar ? asset('storage/'.$profile->avatar) : asset('images/profile.jpg') }} alt="profile">
             <div class="details">
                 <p class="name">{{$profile->name}}</p>
                 <p class="email">{{$profile->email}}</p>
@@ -24,7 +26,7 @@
             </div>
             <div class="edit">
                 @if(auth()->user()->id == $profile->user_id)
-                    <a href="/profile/edit/{{$profile->id}}"><button class="editBtn">
+                    <a href="/profile/{{$profile->id}}/edit"><button class="editBtn">
                         <i class="fas fa-user-edit"></i>
                         Edit Profile
                     </button></a>

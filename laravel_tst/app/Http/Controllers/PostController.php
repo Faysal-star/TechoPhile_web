@@ -15,12 +15,17 @@ class PostController extends Controller
         // dd($post->dislikes->count()) ;
         // dd($post->likes->count()) ;
         // dd($post->comment->count()) ; 
+        // see if the user has liked the post
+        // $liked = auth()->user()->likes->contains($post);
+        // dd($liked);
         return view('posts/singlePost' , [
             'post' => $post,
             'comments' => $post->comment,
             'likes' => $post->likes->count(),
             'dislikes' => $post->dislikes->count(),
-            'commentsCount' => $post->comment->count()
+            'commentsCount' => $post->comment->count(),
+            'liked' => auth()->user()->likes->contains($post),
+            'disliked' => auth()->user()->dislikes->contains($post)
         ]);
     }
 
@@ -100,7 +105,7 @@ class PostController extends Controller
         // dd($like_count, $dislike_count, $comments_count, $elasped_day);
         $impact_factor = 1 + $like_count * 70 + $comments_count * 70 - $elapsed_day * 2 - $dislike_count * 38;
         $post->update(['impact_factor' => $impact_factor]);
-        dd($impact_factor);
+        // dd($impact_factor);
 
         return back();
     }
@@ -116,7 +121,17 @@ class PostController extends Controller
         else{
             auth()->user()->dislikes()->attach($post->id, ['type' => 'dislike']);
         }
-        
+
+        $like_count = $post->likes->count();
+        $dislike_count = $post->dislikes->count();
+        $comments_count = $post->comment->count();
+        $created_at = $post->created_at;
+        $elapsed_day = $created_at->diffInDays(now());
+
+        // dd($like_count, $dislike_count, $comments_count, $elasped_day);
+        $impact_factor = 1 + $like_count * 70 + $comments_count * 70 - $elapsed_day * 2 - $dislike_count * 38;
+        $post->update(['impact_factor' => $impact_factor]);
+
         return back();
     }
 }

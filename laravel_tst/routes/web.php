@@ -37,12 +37,12 @@ Route::group(['middleware' => 'auth'] , function(){
     Route::post('/comment' , [PostController::class , 'comment']) ;
 
     // Likes and Dislikes
-    Route::get('/post/{post}/like', [PostController::class, 'like'])->name('posts.like');
+    Route::post('/post/{post}/like', [PostController::class, 'like'])->name('posts.like');
 
     Route::post('/post/{post}/dislike', [PostController::class, 'dislike'])->name('posts.dislike');
 
     // Posts show
-    Route::get('/post/{post}' , [PostController::class  , 'show'])->where('id' , '[0-9]+') ;
+    Route::get('/post/{post}' , [PostController::class  , 'show'])->where('post' , '[0-9]+') ;
 
     // Chat
     Route::get('/chatLogin', function(){
@@ -53,11 +53,15 @@ Route::group(['middleware' => 'auth'] , function(){
     });
 
     // Profile follow and unfollow
-    Route::post('/profile/{profile}/follow' , [ProfileController::class , 'follow'])->where('id' , '[0-9]+')->name('profile.follow') ;
+    Route::post('/profile/{profile}/follow' , [ProfileController::class , 'follow'])->where('profile' , '[0-9]+')->name('profile.follow') ;
 
-    Route::delete('/profile/{profile}/unfollow' , [ProfileController::class , 'unfollow'])->where('id' , '[0-9]+')->name('profile.unfollow') ;
+    Route::delete('/profile/{profile}/unfollow' , [ProfileController::class , 'unfollow'])->where('profile' , '[0-9]+')->name('profile.unfollow') ;
+
+    // Profile Edit
+    Route::get('/profile/{profile}/edit' , [ProfileController::class , 'edit'])->where('profile' , '[0-9]+') ;
+    Route::put('/profile/{profile}' , [ProfileController::class , 'update'])->where('profile' , '[0-9]+') ;
 
     // Profile show
-    Route::get('/profile/{profile}' , [ProfileController::class , 'show'])->where('id' , '[0-9]+') ;
+    Route::get('/profile/{profile}' , [ProfileController::class , 'show'])->where('profile' , '[0-9]+') ;
 
 });

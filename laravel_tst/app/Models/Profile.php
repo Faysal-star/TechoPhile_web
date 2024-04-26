@@ -10,7 +10,7 @@ class Profile extends Model
 {
     use HasFactory;
     
-    protected $fillable = ['user_id' , 'name' , 'email' , 'phone' , 'address' , 'city' , 'github' , 'twitter' , 'facebook' , 'linkedin' , 'avatar' , 'bio' , 'cover'] ;
+    protected $fillable = ['user_id' , 'name' , 'email' , 'phone' , 'address' , 'city' , 'github' , 'twitter' , 'facebook' , 'linkedin' , 'github_link' , 'twitter_link' , 'facebook_link' , 'linkedin_link' , 'avatar' , 'bio' , 'cover'] ;
 
     public function user(){
         return $this->belongsTo(User::class);

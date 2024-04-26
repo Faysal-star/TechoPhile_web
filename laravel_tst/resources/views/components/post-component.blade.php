@@ -3,11 +3,7 @@
 <div class="post">
     <div class="postHeader">
         <div class="proPic">
-            @if($post->user->profile->image)
-                <img src="{{asset('storage/images/'.$post->user->profile->image)}}" alt="profile">
-            @else
-            <img src={{asset('images/profile.jpg')}} alt="profile">
-            @endif
+            <img src={{ $post->user->profile->avatar ? asset('storage/'.$post->user->profile->avatar) : asset('images/profile.jpg') }} alt="profile">
         </div>
         <div class="otherDetails">
             <p class="nameP">{{$post->user->name}}</p>

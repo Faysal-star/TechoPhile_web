@@ -32,7 +32,8 @@
 
             <label for="body">Description</label> <br>
             <textarea class="body" id="body" name="body"
-            rows="10" cols="50">
+            rows="10" cols="50" >
+                {{old('body')}}
             </textarea>
             @error('body')
                 <p class="errText">{{ $message }}</p>
