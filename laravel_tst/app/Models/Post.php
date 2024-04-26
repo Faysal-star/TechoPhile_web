@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\User;
+use App\Models\Report;
 use App\Models\Comment;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -40,5 +42,9 @@ class Post extends Model
     public function dislikes(){
         return $this->belongsToMany(User::class, 'likes', 'post_id', 'user_id')
                     ->wherePivot('type', '=' , 'dislike');
+    }
+
+    public function reports(){
+        return $this->hasMany(Report::class);
     }
 }

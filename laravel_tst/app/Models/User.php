@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use App\Models\Post;
+use App\Models\Report;
 use App\Models\Comment;
 use App\Models\Profile;
 use Laravel\Sanctum\HasApiTokens;
@@ -75,4 +76,7 @@ class User extends Authenticatable
                     ->wherePivot('type', '=' , 'dislike');
     }
 
+    public function reports(){
+        return $this->hasMany(Report::class);
+    }
 }

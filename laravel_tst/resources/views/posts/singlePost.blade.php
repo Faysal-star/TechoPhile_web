@@ -59,6 +59,14 @@
                 {{$post->comment->count()}}
             </button>
         </div>
+        <div class="report">
+            <a href="/report/{{$post->id}}">
+                <button>
+                <i class="fas fa-flag"></i>
+                Report
+            </button>
+        </a>
+        </div>
     </div>
 
     <div class="factCheck">

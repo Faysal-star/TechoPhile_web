@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Comment;
 use App\Models\Post;
-use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Report;
+use App\Models\Comment;
+use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
@@ -133,5 +134,27 @@ class PostController extends Controller
         $post->update(['impact_factor' => $impact_factor]);
 
         return back();
+    }
+
+    public function report(Post $post){
+        // dd(Report::all());
+        // $first = Report::all()->first();
+        // dd($first->user->name);
+        return view('posts/report' , [
+            'post' => $post
+        ]);
+    }
+
+    public function reportStore(Post $post){
+        $attributes = request()->validate([
+            'reportBody' => 'required'
+        ]);
+
+        $attributes['user_id'] = auth()->id();
+        $attributes['post_id'] = $post->id;
+
+        Report::create($attributes) ;
+
+        return redirect('/post/'.$post->id);
     }
 }

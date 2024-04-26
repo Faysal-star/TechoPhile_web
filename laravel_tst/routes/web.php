@@ -33,8 +33,10 @@ Route::group(['middleware' => 'auth'] , function(){
 
     Route::post('/store' , [PostController::class , 'store']) ;
 
-    // Comments
+    // Comments & reports
     Route::post('/comment' , [PostController::class , 'comment']) ;
+    Route::get('/report/{post}' , [PostController::class , 'report']) ;
+    Route::post('/report/{post}' , [PostController::class , 'reportStore']) ;
 
     // Likes and Dislikes
     Route::post('/post/{post}/like', [PostController::class, 'like'])->name('posts.like');
