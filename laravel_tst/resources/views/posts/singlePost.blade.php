@@ -33,7 +33,7 @@
         </div>
     </div>
 
-    <div class="postContent">
+    <div class="postContent" id="blogText">
         {!!$post->body !!}
         {{-- <img src="./images/cover.jpg" alt=""> --}}
     </div>
@@ -70,8 +70,8 @@
     </div>
 
     <div class="factCheck">
-        <h2>Fact Check</h2>
-        <p id='factCheckResult'>Fact Check Result</p>
+        <h2 >Fact Check</h2>
+        <p id='factCheckResult'>Click to Fact Check</p>
     </div>
 
     <div class="postComment">
@@ -100,5 +100,7 @@
     </div>
 </div>
 
+
+<script src="{{asset('js/singlePost.js')}}"></script>
 
 @endsection

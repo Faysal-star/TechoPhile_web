@@ -186,6 +186,7 @@ body{
     padding: 10px 40px 10px 40px;
     border: 1px solid #0ea6ec62;
     margin: 2px 0 10px 0;
+    cursor: pointer;
 }
 
 .factCheck h2{
@@ -198,6 +199,7 @@ body{
     font-weight: 500;
     color : rgb(143, 255, 255);
 }
+
 
 .postComment{
     width: 100%;
