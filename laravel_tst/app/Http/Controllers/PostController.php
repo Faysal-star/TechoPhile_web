@@ -157,4 +157,28 @@ class PostController extends Controller
 
         return redirect('/post/'.$post->id);
     }
+
+    public function edit(Post $post){
+        return view('posts/edit' , [
+            'post' => $post
+        ]);
+    }
+
+    public function update(Post $post){
+        $attributes = request()->validate([
+            'title' => 'required' ,
+            'tags' => 'required',
+            'body' => 'required'
+        ]);
+
+        $post->update($attributes) ;
+
+        return redirect('/post/'.$post->id) ;
+    }
+
+    public function destroy(Post $post){
+        $post->delete() ;
+
+        return redirect()->back();
+    }
 }

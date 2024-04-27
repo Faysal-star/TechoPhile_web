@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActivityController;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -33,6 +34,13 @@ Route::group(['middleware' => 'auth'] , function(){
 
     Route::post('/store' , [PostController::class , 'store']) ;
 
+    // Posts edit
+    Route::get('/post/{post}/edit' , [PostController::class , 'edit'])->where('post' , '[0-9]+') ;
+    Route::put('/post/{post}' , [PostController::class , 'update'])->where('post' , '[0-9]+') ;
+
+    // Posts delete
+    Route::delete('/post/{post}' , [PostController::class , 'destroy'])->where('post' , '[0-9]+') ;
+
     // Comments & reports
     Route::post('/comment' , [PostController::class , 'comment']) ;
     Route::get('/report/{post}' , [PostController::class , 'report']) ;
@@ -65,5 +73,12 @@ Route::group(['middleware' => 'auth'] , function(){
 
     // Profile show
     Route::get('/profile/{profile}' , [ProfileController::class , 'show'])->where('profile' , '[0-9]+') ;
+
+
+    // Activity
+    Route::get('/activity' , [ActivityController::class , 'activity']) ;
+    Route::get('/activity/likes' , [ActivityController::class , 'likes']) ;
+    Route::get('/activity/dislikes' , [ActivityController::class , 'dislikes']) ;
+    Route::get('/activity/posts' , [ActivityController::class , 'posts']) ;
 
 });

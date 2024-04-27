@@ -97,7 +97,7 @@
                     </p>
                 </div>
                 <div class="github infoP">
-                    <a href="/" class="#e74c3c#e74c3c">
+                    <a href="{{$profile->github_link ? '//'.$profile->github_link : '#' }}" target="_blank" class="github">
                         <i class="fab fa-github"></i>
                         @if ($profile->github)
                             {{$profile->github}}
@@ -107,7 +107,7 @@
                     </a>
                 </div>
                 <div class="twitter infoP">
-                    <a href="/" class="twitterP">
+                    <a href="{{$profile->twitter_link ? '//'.$profile->twitter_link : '#' }}" class="twitterP">
                         <i class="fab fa-twitter"></i>
                         @if ($profile->twitter)
                             {{$profile->twitter}}
@@ -117,7 +117,7 @@
                     </a>
                 </div>
                 <div class="linkedin infoP">
-                    <a href="/" class="linkedinP">
+                    <a href="{{$profile->linkedin_link ? '//'.$profile->linkedin_link : '#' }}" class="linkedinP">
                         <i class="fab fa-linkedin"></i>
                         @if ($profile->linkedin)
                             {{$profile->linkedin}}
@@ -127,7 +127,7 @@
                     </a>
                 </div>
                 <div class="facebook infoP">
-                    <a href="/" class="facebookP">
+                    <a href="{{$profile->facebook_link ? '//'.$profile->facebook_link : '#' }}" class="facebookP">
                         <i class="fab fa-facebook"></i>
                         @if ($profile->facebook)
                             {{$profile->facebook}}
