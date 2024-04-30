@@ -75,5 +75,21 @@ class ProfileController extends Controller
 
         return redirect("/profile/".$profile->id) ;
     }
+
+    public function pFollowings(){
+        // dd(auth()->user()->profile->followings) ;
+        return view('follow.following',
+        [
+            'profiles' => auth()->user()->profile->followings
+        ]) ;
+    }
+
+    public function pFollowers(){
+        return view('follow.follower',
+        [
+            'profiles' => auth()->user()->profile->followers
+        ]) ;
+    }
+
     
 }

@@ -24,7 +24,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/">
+                    <a href="/followPage">
                         <i class="fas fa-user-friends"></i>
                         <p class="ltext">Follow</p>
                     </a>

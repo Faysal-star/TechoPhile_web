@@ -30,6 +30,12 @@
                         <i class="fas fa-user-edit"></i>
                         Edit Profile
                     </button></a>
+                    <a href="/logout">
+                    <button class="editBtn">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Logout
+                    </button>
+                    </a>
                 @elseif(auth()->user()->profile->isFollowing($profile))
                     <form method="POST" action="{{ route('profile.unfollow', $profile) }}">
                         @csrf

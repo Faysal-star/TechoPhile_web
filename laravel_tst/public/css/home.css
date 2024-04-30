@@ -307,6 +307,11 @@ nav ul li a:hover{
     font-weight: 600;
 }
 
+.nameP a{
+    color: var(--text-light-blue);
+    text-decoration: none;
+}
+
 .time{
     font-size: .8rem;
     font-weight: 400;

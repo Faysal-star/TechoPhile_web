@@ -54,4 +54,11 @@ class AuthController extends Controller
         return back()->withErrors(['email' => 'Your provided credentials could not be verified!']);
    
     }
+
+    public function logout(){
+        auth()->logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+        return redirect()->route('login');
+    }
 }

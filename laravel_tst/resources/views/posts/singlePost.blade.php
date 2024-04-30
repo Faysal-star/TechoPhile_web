@@ -18,7 +18,7 @@
             {{-- <img src="./images/profile.jpg" alt=""> --}}
             <img src={{ $post->user->profile->avatar ? asset('storage/'.$post->user->profile->avatar) : asset('images/profile.jpg') }} alt="">
             <div class="authorInfo">
-                <span><a href="#">{{$post->user->name}}</a></span>
+                <span><a href="/profile/{{$post->user->profile->id}}">{{$post->user->name}}</a></span>
                 <br>
                 <span class="date">{{$post->created_at}}</span>
             </div>

@@ -24,6 +24,9 @@ Route::controller(AuthController::class)->group(function(){
 
 
 Route::group(['middleware' => 'auth'] , function(){
+    // Logout
+    Route::get('/logout' , [AuthController::class , 'logout'])->name('logout') ;
+
     // Home page
     Route::get('/home' , [HomeController::class , 'index'])->name('home');
 
@@ -80,5 +83,11 @@ Route::group(['middleware' => 'auth'] , function(){
     Route::get('/activity/likes' , [ActivityController::class , 'likes']) ;
     Route::get('/activity/dislikes' , [ActivityController::class , 'dislikes']) ;
     Route::get('/activity/posts' , [ActivityController::class , 'posts']) ;
+
+
+    // Followpage
+    Route::get('/followPage' , [ProfileController::class , 'pFollowers']) ;
+    Route::get('/followPage/followers' , [ProfileController::class , 'pFollowers']) ;
+    Route::get('/followPage/followings' , [ProfileController::class , 'pFollowings']) ;
 
 });

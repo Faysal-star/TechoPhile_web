@@ -6,7 +6,9 @@
             <img src={{ $post->user->profile->avatar ? asset('storage/'.$post->user->profile->avatar) : asset('images/profile.jpg') }} alt="profile">
         </div>
         <div class="otherDetails">
-            <p class="nameP">{{$post->user->name}}</p>
+            <p class="nameP">
+                <a href="/profile/{{$post->user->profile->id}}">{{$post->user->name}}</a>
+            </p>
             <p class="time">{{$post->created_at}}</p>
         </div>
     </div>
