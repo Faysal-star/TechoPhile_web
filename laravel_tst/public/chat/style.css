@@ -228,7 +228,53 @@ a {
 .uploadC{
 	padding : 10px ;
 	color : white;
+
 }
+
+.meet{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	width: 100%;
+}
+
+#createMeet , #joinMeet{
+	width: 100%;
+	padding: 5px;
+	height: 40px;
+	margin: 20px 0;
+	background: var(--bg-carolina-blue);
+	color: var(--bg-dark3);
+	border: 1.5px solid var(--bg-carolina-blue);
+	border-radius: 5px;
+	font-size: 1rem;
+	font-weight: 300;
+	transition: 0.2s;
+	cursor: pointer;
+}
+
+#meetId{
+	width: 100%;
+	padding: 5px;
+	height: 40px;
+	margin: 5px 0;
+	background: #9695952a;
+	color: white;
+	border: none;
+	border-bottom: 1.5px solid var(--bg-carolina-blue);
+	/* border-radius: 5px; */
+	font-size: 1rem;
+	font-weight: 300;
+	transition: 0.2s;
+	cursor: pointer;
+}
+
+#meetId:focus{
+	outline: none;
+}
+
+
 
 /* Join Page */
 .join-container {

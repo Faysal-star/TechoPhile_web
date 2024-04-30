@@ -54,8 +54,22 @@
           <input type="file" id="fileInput">
           <button id="upload" >Upload</button>
           <br>
-          <p id="file_name">dfgffg</p>
+          <p id="file_name"></p>
         </div>
+
+        <div class="meet">
+          <button id="createMeet">
+            <i class="fas fa-video"></i>
+            <a href="//192.168.0.104:3005/vid?name={{auth()->user()->name}}" target="__blank">Create Meeting</a>
+          </button>
+          <input type="text" id="meetId" placeholder="Enter Meet id">
+          <input type="hidden" id="userNameH" value={{auth()->user()->name}}>
+          <button id="joinMeet">
+            <i class="fas fa-video"></i>
+            Or Join Meeting
+          </button>
+        </div>
+
       </div>
     </main>
   </div>

@@ -132,3 +132,17 @@ document.getElementById('upload').addEventListener('click', function(e){
     document.getElementById("file_name").innerHTML = sessionStorage.getItem('file_name');
 });
 
+
+let meetBtn = document.getElementById('joinMeet');
+let meetId = document.getElementById('meetId');
+let userName = document.getElementById('userNameH');
+
+meetBtn.addEventListener('click', function(e){
+    e.preventDefault();
+    let meetIdValue = meetId.value;
+    let userNameValue = userName.value;
+    console.log(meetIdValue);
+    // redirect window to /vid/id
+    window.location.href = `//192.168.0.104:3005/vid/${meetIdValue}/?name=${userNameValue}`;
+})
+
