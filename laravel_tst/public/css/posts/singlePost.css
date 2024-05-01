@@ -248,6 +248,12 @@ body{
     color: #ffffffc2;
 }
 
+.fullComment{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+
 .prevComments{
     width: 100%;
     display: flex;
@@ -258,6 +264,22 @@ body{
     padding: 0px 25px;
 }
 
+.cmntWithReply{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3px 20px;
+    /* border-left: 1px solid #0ea6ec62; */
+    margin: 5px 0;
+}
+
+.replies{
+    border-left: 1px solid #0ea6ec62;
+    margin-top: 5px;
+}
+
 .comment{
     width: 100%;
     display: flex;
@@ -265,7 +287,7 @@ body{
     justify-content: space-between;
     padding: 10px 20px;
     border: 1px solid #0ea6ec62;
-    margin: 2px 0 20px 0;
+    /* margin: 2px 0 20px 0; */
     border-radius: 5px;
     background-color: #0ea6ec15;
 
@@ -292,9 +314,53 @@ body{
 
 .cmntAthr p{
     color: var(--text-shadow-blue);
-    font-size: .8rem;
+    font-size: 1rem;
 }
 
 .cmntContent{
     margin: 5px 0px;
+}
+
+
+.replyForm{
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    /* border : 1px solid red */
+}
+
+.replyShow{
+    width: 10%;
+    font-size: .9rem;
+    color: var(--text-carolina-blue);
+    cursor: pointer;
+}
+
+.replyForm form{
+    width: 90%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    /* visibility: hidden; */
+}
+
+.replyForm form input{
+    width: 80%;
+    padding: 10px;
+    height: 40px;
+    border: none;
+    border-bottom: 1px solid var(--text-light-blue);
+    background: #7978781a;
+    color: white;
+    transition: .2s;
+}
+
+.replyForm form button{
+    width: 10%;
+    height: 40px;
+    font-size: 20px;
+    background-color: var(--bg-carolina-blue);
+    border: none;
+    color: white;
 }

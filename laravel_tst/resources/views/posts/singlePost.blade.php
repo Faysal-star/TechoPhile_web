@@ -91,7 +91,9 @@
         @unless (count($comments) == 0)
         @foreach ($comments as $comment)
             {{-- <h2>Post</h2> --}}
-            <x-comment :comment="$comment" />
+            <div class="fullComment">
+                <x-comment :comment="$comment"/>
+            </div>
         @endforeach
         
         @else

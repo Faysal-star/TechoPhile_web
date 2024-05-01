@@ -22,3 +22,20 @@ function askGQuestion(question){
         factCheckResult.innerText = data;
     })
 } 
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    var replyButtons = document.querySelectorAll('.replyShow');
+
+    replyButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            var form = button.nextElementSibling;
+
+            if (form.style.display === 'none' || form.style.display === '') {
+                form.style.display = 'flex';
+            } else {
+                form.style.display = 'none';
+            }
+        });
+    });
+});

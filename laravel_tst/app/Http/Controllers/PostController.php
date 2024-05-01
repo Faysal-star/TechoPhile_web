@@ -19,9 +19,17 @@ class PostController extends Controller
         // see if the user has liked the post
         // $liked = auth()->user()->likes->contains($post);
         // dd($liked);
+
+        $comments = Comment::with('allReplies')
+                            ->whereNull('parent_id')
+                            ->where('post_id', $post->id)
+                            ->get();
+
+        // dd($comments->toArray());
+
         return view('posts/singlePost' , [
             'post' => $post,
-            'comments' => $post->comment,
+            'comments' => $comments,
             'likes' => $post->likes->count(),
             'dislikes' => $post->dislikes->count(),
             'commentsCount' => $post->comment->count(),
@@ -75,6 +83,10 @@ class PostController extends Controller
             'post_id' => 'required',
             'body' => 'required'
         ]);
+        
+        if(request()->has('parent_id')){
+            $attributes['parent_id'] = request('parent_id');
+        }
 
         $attributes['user_id'] = auth()->id();
         $postId = $attributes['post_id'];
