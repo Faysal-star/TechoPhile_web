@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Report;
 use App\Models\Comment;
 use Illuminate\Http\Request;
+use App\Facades\CustomAuth;
 
 class PostController extends Controller
 {
@@ -17,7 +18,7 @@ class PostController extends Controller
         // dd($post->likes->count()) ;
         // dd($post->comment->count()) ; 
         // see if the user has liked the post
-        // $liked = auth()->user()->likes->contains($post);
+        // $liked = CustomAuth::user()->likes->contains($post);
         // dd($liked);
 
         $comments = Comment::with('allReplies')
@@ -33,8 +34,8 @@ class PostController extends Controller
             'likes' => $post->likes->count(),
             'dislikes' => $post->dislikes->count(),
             'commentsCount' => $post->comment->count(),
-            'liked' => auth()->user()->likes->contains($post),
-            'disliked' => auth()->user()->dislikes->contains($post)
+            'liked' => CustomAuth::user()->likes->contains($post),
+            'disliked' => CustomAuth::user()->dislikes->contains($post)
         ]);
     }
 
@@ -71,7 +72,7 @@ class PostController extends Controller
             'body' => 'required'
         ]);
 
-        $attributes['user_id'] = auth()->id();
+        $attributes['user_id'] = CustomAuth::user()->id;
 
         Post::create($attributes) ;
 
@@ -98,15 +99,15 @@ class PostController extends Controller
     }
 
     public function like(Post $post){
-        if(auth()->user()->likes->contains($post)){
-            auth()->user()->likes()->detach($post->id);
+        if(CustomAuth::user()->likes->contains($post)){
+            CustomAuth::user()->likes()->detach($post->id);
         }
-        else if(auth()->user()->dislikes->contains($post)){
-            auth()->user()->dislikes()->detach($post->id);
-            auth()->user()->likes()->attach($post->id, ['type' => 'like']);
+        else if(CustomAuth::user()->dislikes->contains($post)){
+            CustomAuth::user()->dislikes()->detach($post->id);
+            CustomAuth::user()->likes()->attach($post->id, ['type' => 'like']);
         }
         else{
-            auth()->user()->likes()->attach($post->id, ['type' => 'like']);
+            CustomAuth::user()->likes()->attach($post->id, ['type' => 'like']);
         }
 
         $like_count = $post->likes->count();
@@ -124,15 +125,15 @@ class PostController extends Controller
     }
 
     public function dislike(Post $post){
-        if(auth()->user()->dislikes->contains($post)){
-            auth()->user()->dislikes()->detach($post->id);
+        if(CustomAuth::user()->dislikes->contains($post)){
+            CustomAuth::user()->dislikes()->detach($post->id);
         }
-        else if(auth()->user()->likes->contains($post)){
-            auth()->user()->likes()->detach($post->id);
-            auth()->user()->dislikes()->attach($post->id, ['type' => 'dislike']);
+        else if(CustomAuth::user()->likes->contains($post)){
+            CustomAuth::user()->likes()->detach($post->id);
+            CustomAuth::user()->dislikes()->attach($post->id, ['type' => 'dislike']);
         }
         else{
-            auth()->user()->dislikes()->attach($post->id, ['type' => 'dislike']);
+            CustomAuth::user()->dislikes()->attach($post->id, ['type' => 'dislike']);
         }
 
         $like_count = $post->likes->count();
@@ -162,7 +163,7 @@ class PostController extends Controller
             'reportBody' => 'required'
         ]);
 
-        $attributes['user_id'] = auth()->id();
+        $attributes['user_id'] = CustomAuth::user()->id;
         $attributes['post_id'] = $post->id;
 
         Report::create($attributes) ;

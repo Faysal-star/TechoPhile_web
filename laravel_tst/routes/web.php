@@ -20,13 +20,11 @@ Route::controller(AuthController::class)->group(function(){
     Route::get('login' , 'login')->name('login') ;
     Route::post('login' , 'loginAction')->name('login.action') ;
 
+    Route::get('logout' , 'logout')->name('logout') ;
 });
 
 
-Route::group(['middleware' => 'auth'] , function(){
-    // Logout
-    Route::get('/logout' , [AuthController::class , 'logout'])->name('logout') ;
-
+Route::group(['middleware' => 'custom.auth'] , function(){
     // Home page
     Route::get('/home' , [HomeController::class , 'index'])->name('home');
 

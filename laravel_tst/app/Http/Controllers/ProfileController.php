@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Profile;
 use Illuminate\Http\Request;
-
+use App\Facades\CustomAuth;
 
 class ProfileController extends Controller
 {
@@ -23,12 +23,12 @@ class ProfileController extends Controller
 
     public function follow(Profile $profile){
         // dd($profile) ;
-        $profile->followers()->attach(auth()->user()->profile) ;
+        $profile->followers()->attach(CustomAuth::user()->profile) ;
         return back() ;
     }
 
     public function unfollow(Profile $profile){
-        $profile->followers()->detach(auth()->user()->profile) ;
+        $profile->followers()->detach(CustomAuth::user()->profile) ;
         return back() ;
     }
 
@@ -40,7 +40,7 @@ class ProfileController extends Controller
 
     public function update(Profile $profile){
         // dd($profile) ;
-        if(auth()->user()->profile->isNot($profile)){
+        if(CustomAuth::user()->profile->isNot($profile)){
             abort(403) ;
         }
         // protected $fillable = ['user_id' , 'name' , 'email' , 'phone' , 'address' , 'city' , 'github' , 'twitter' , 'facebook' , 'linkedin' , 'avatar' , 'bio' , 'cover'] ;
@@ -77,17 +77,17 @@ class ProfileController extends Controller
     }
 
     public function pFollowings(){
-        // dd(auth()->user()->profile->followings) ;
+        // dd(CustomAuth::user()->profile->followings) ;
         return view('follow.following',
         [
-            'profiles' => auth()->user()->profile->followings
+            'profiles' => CustomAuth::user()->profile->followings
         ]) ;
     }
 
     public function pFollowers(){
         return view('follow.follower',
         [
-            'profiles' => auth()->user()->profile->followers
+            'profiles' => CustomAuth::user()->profile->followers
         ]) ;
     }
 

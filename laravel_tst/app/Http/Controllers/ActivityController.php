@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Facades\CustomAuth;
 use Illuminate\Http\Request;
 
 class ActivityController extends Controller
@@ -9,7 +10,7 @@ class ActivityController extends Controller
     public function activity()
     {
         // first liked post
-        // $firstLikedPost = auth()->user()->likes->first();
+        // $firstLikedPost = CustomAuth::user()->likes->first();
         // dd($firstLikedPost->id);
         return redirect('/activity/likes');
     }
@@ -17,22 +18,22 @@ class ActivityController extends Controller
     public function likes()
     {
         return view('activity.likes' , [
-            'likes' => auth()->user()->likes
+            'likes' => CustomAuth::user()->likes
         ]);
     }
 
     public function dislikes()
     {
         return view('activity.dislikes' , [
-            'dislikes' => auth()->user()->dislikes
+            'dislikes' => CustomAuth::user()->dislikes
         ]);
     }
 
     public function posts()
     {
-        // dd(auth()->user()->post);
+        // dd(CustomAuth::user()->post);
         return view('activity.posts' , [
-            'posts' => auth()->user()->post
+            'posts' => CustomAuth::user()->post
         ]);
     }
 }

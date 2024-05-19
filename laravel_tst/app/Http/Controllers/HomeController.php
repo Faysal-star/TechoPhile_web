@@ -12,8 +12,10 @@ class HomeController extends Controller
         // dd(request(['tag'])) ;
         // $posts = Post::latest()->filter(request(['tag']))->get() ;
         // dd($posts) ;
-        return view('home' , [
-            'posts' => Post::latest()->filter(request(['tag' , 'search']))->get()
-        ]) ;
+        return view('home', [
+            'posts' => Post::filter(request(['tag', 'search']))
+                            ->orderBy('impact_factor', 'desc')
+                            ->get()
+        ]);
     }
 }

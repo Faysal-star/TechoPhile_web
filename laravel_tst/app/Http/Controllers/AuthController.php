@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Facades\CustomAuth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -37,6 +39,7 @@ class AuthController extends Controller
     }
 
     public function login(){
+        // dd(CustomAuth::check());
         return view('auth/login') ;
     }
 
@@ -46,19 +49,31 @@ class AuthController extends Controller
             'password' => 'required'
         ]);
 
-        if(auth()->attempt($attributes)){
+        // if(auth()->attempt($attributes)){
+        //     request()->session()->regenerate();
+        //     return redirect()->route('home');
+        // }
+        $user = \App\Models\User::where('email', $attributes['email'])->first();
+
+        if ($user && Hash::check($attributes['password'], $user->password)) {
+            CustomAuth::login($user);
             request()->session()->regenerate();
+
+            // dd(CustomAuth::user()->profile) ;
+            // $authUser = CustomAuth::user();
+            // view()->share('authUser', $authUser);
+
             return redirect()->route('home');
         }
+    
+
 
         return back()->withErrors(['email' => 'Your provided credentials could not be verified!']);
    
     }
 
     public function logout(){
-        auth()->logout();
-        request()->session()->invalidate();
-        request()->session()->regenerateToken();
+        CustomAuth::logout();
         return redirect()->route('login');
     }
 }

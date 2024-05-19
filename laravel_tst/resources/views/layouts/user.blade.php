@@ -44,9 +44,9 @@
             </ul>
         </div>
         <div class="me">
-            <a href="/profile/{{auth()->user()->profile->id}}">{{auth()->user()->name}}</a>
+            <a href="/profile/{{$authUser->profile->id}}">{{$authUser->name}}</a>
             {{-- <img src="./images/profile.jpg" alt=""> --}}
-            <img src={{ auth()->user()->profile->avatar ? asset('storage/'.auth()->user()->profile->avatar) : asset('images/profile.jpg') }} alt="profile">
+            <img src={{ $authUser->profile->avatar ? asset('storage/'.$authUser->profile->avatar) : asset('images/profile.jpg') }} alt="profile">
         </div>
     </nav>
 

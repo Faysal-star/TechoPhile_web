@@ -60,10 +60,10 @@
         <div class="meet">
           <button id="createMeet">
             <i class="fas fa-video"></i>
-            <a href="//192.168.0.104:3005/vid?name={{auth()->user()->name}}" target="__blank">Create Meeting</a>
+            <a href="//192.168.0.104:3005/vid?name={{$authUser->name}}" target="__blank">Create Meeting</a>
           </button>
           <input type="text" id="meetId" placeholder="Enter Meet id">
-          <input type="hidden" id="userNameH" value={{auth()->user()->name}}>
+          <input type="hidden" id="userNameH" value={{$authUser->name}}>
           <button id="joinMeet">
             <i class="fas fa-video"></i>
             Or Join Meeting

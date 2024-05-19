@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="edit">
-                @if(auth()->user()->id == $profile->user_id)
+                @if($authUser->id == $profile->user_id)
                     <a href="/profile/{{$profile->id}}/edit"><button class="editBtn">
                         <i class="fas fa-user-edit"></i>
                         Edit Profile
@@ -36,7 +36,7 @@
                         Logout
                     </button>
                     </a>
-                @elseif(auth()->user()->profile->isFollowing($profile))
+                @elseif($authUser->profile->isFollowing($profile))
                     <form method="POST" action="{{ route('profile.unfollow', $profile) }}">
                         @csrf
                         @method('DELETE')

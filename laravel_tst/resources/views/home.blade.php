@@ -15,7 +15,7 @@
     </div>
     <div class="createPost">
         <div class="profile">
-            <img src={{ auth()->user()->profile->avatar ? asset('storage/'.auth()->user()->profile->avatar) : asset('images/profile.jpg') }} />
+            <img src={{ $authUser->profile->avatar ? asset('storage/'.$authUser->profile->avatar) : asset('images/profile.jpg') }} />
         </div> 
         <div class="postDesc">
             <p>Something you want to share ?....</p>
