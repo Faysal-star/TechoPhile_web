@@ -11,7 +11,7 @@
     <h3>Activity Log </h3>
     <div class="grps">
         <div class="leftActivity">
-            <div class="activityGrpL active">
+            <div class="activityGrpL">
                 <a href="/activity/likes">Likes</a>
             </div>
             <div class="activityGrpL">
@@ -20,24 +20,24 @@
             <div class="activityGrpL">
                 <a href="/activity/posts">Posts</a>
             </div>
-            <div class="activityGrpL">
+            <div class="activityGrpL active">
                 <a href="/activity/notifications">Notifications</a>
             </div>
         </div>
         <div class="rightActivity">
-            @unless (count($likes) > 0)
+            @unless (count($notifications) > 0)
                 <div class="activityGrpR">
                     <p>No likes yet</p>
                 </div>
                 
             @else
-                @foreach ($likes as $like)
+                @foreach ($notifications as $notification)
                     <div class="activityGrpR">
-                        You disliked a post of {{$like->user->name}} on {{$like->created_at->format('d M Y')}}
+                       <p> {!! $notification['message'] !!} </p>
                         <br>
-                        Title : {{$like->title}}
+                        {{-- Title : {{$like->title}} --}}
                         <div class="goBtn">
-                            <a href="/post/{{$like->id}}"><button class="goBtnR">Go</button></a>
+                            <a href="/post/{{$notification['post_id']}}"><button class="goBtnR">Go</button></a>
                         </div>
                     </div>
                 @endforeach

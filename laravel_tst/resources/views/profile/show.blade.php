@@ -26,6 +26,12 @@
             </div>
             <div class="edit">
                 @if($authUser->id == $profile->user_id)
+                    @if($authUser->type == 'admin')
+                        <a href="/admin"><button class="editBtn">
+                            <i class="fas fa-user-edit"></i>
+                            Admin Panel
+                        </button></a>
+                    @endif
                     <a href="/profile/{{$profile->id}}/edit"><button class="editBtn">
                         <i class="fas fa-user-edit"></i>
                         Edit Profile

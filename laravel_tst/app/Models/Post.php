@@ -36,12 +36,12 @@ class Post extends Model
 
     public function likes(){
         return $this->belongsToMany(User::class, 'likes', 'post_id', 'user_id')
-                    ->wherePivot('type', '=' ,'like');
+                    ->wherePivot('type', '=' ,'like')->withTimestamps();
     }
 
     public function dislikes(){
         return $this->belongsToMany(User::class, 'likes', 'post_id', 'user_id')
-                    ->wherePivot('type', '=' , 'dislike');
+                    ->wherePivot('type', '=' , 'dislike')->withTimestamps();
     }
 
     public function reports(){

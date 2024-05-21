@@ -40,6 +40,22 @@
         @endunless
     </div>
 
+    <div class="pagination">
+        @if($posts->hasPages())
+            @if(!$posts->onFirstPage())
+                <a href="{{ $posts->previousPageUrl() }}" class="pActive">Prev</a>
+            @else
+                <a href="#" class="pDisabled">Prev</a>
+            @endif
+
+            @if($posts->hasMorePages())
+                <a href="{{ $posts->nextPageUrl() }}" class="pActive">Next</a>
+            @else
+                <a href="#" class="pDisabled">Next</a>
+            @endif
+        @endif
+    </div>
+
 </div>
 
 @endsection

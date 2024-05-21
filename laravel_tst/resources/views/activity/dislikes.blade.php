@@ -20,6 +20,9 @@
             <div class="activityGrpL">
                 <a href="/activity/posts">Posts</a>
             </div>
+            <div class="activityGrpL">
+                <a href="/activity/notifications">Notifications</a>
+            </div>
         </div>
         <div class="rightActivity">
             @unless (count($dislikes) > 0)

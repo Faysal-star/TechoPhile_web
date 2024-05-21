@@ -15,7 +15,11 @@ class HomeController extends Controller
         return view('home', [
             'posts' => Post::filter(request(['tag', 'search']))
                             ->orderBy('impact_factor', 'desc')
-                            ->get()
+                            ->simplePaginate(10)
         ]);
+    }
+
+    public function admin(){
+        return view('admin') ;
     }
 }

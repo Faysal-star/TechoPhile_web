@@ -68,12 +68,12 @@ class User extends Authenticatable
 
     public function likes(){
         return $this->belongsToMany(Post::class, 'likes', 'user_id', 'post_id')
-                    ->wherePivot('type', '=' , 'like');
+                    ->wherePivot('type', '=' , 'like')->withTimestamps();
     }
 
     public function dislikes(){
         return $this->belongsToMany(Post::class, 'likes', 'user_id', 'post_id')
-                    ->wherePivot('type', '=' , 'dislike');
+                    ->wherePivot('type', '=' , 'dislike')->withTimestamps();
     }
 
     public function reports(){

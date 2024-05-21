@@ -89,7 +89,7 @@ class PostController extends Controller
             $attributes['parent_id'] = request('parent_id');
         }
 
-        $attributes['user_id'] = auth()->id();
+        $attributes['user_id'] = CustomAuth::user()->id;
         $postId = $attributes['post_id'];
 
         Comment::create($attributes) ;

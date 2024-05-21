@@ -81,11 +81,16 @@ Route::group(['middleware' => 'custom.auth'] , function(){
     Route::get('/activity/likes' , [ActivityController::class , 'likes']) ;
     Route::get('/activity/dislikes' , [ActivityController::class , 'dislikes']) ;
     Route::get('/activity/posts' , [ActivityController::class , 'posts']) ;
+    Route::get('/activity/notifications' , [ActivityController::class , 'notifications']) ;
 
 
     // Followpage
     Route::get('/followPage' , [ProfileController::class , 'pFollowers']) ;
     Route::get('/followPage/followers' , [ProfileController::class , 'pFollowers']) ;
     Route::get('/followPage/followings' , [ProfileController::class , 'pFollowings']) ;
+
+
+    // admin panel
+    Route::get('/admin' , [HomeController::class , 'admin']) ;
 
 });
