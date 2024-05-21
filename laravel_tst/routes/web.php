@@ -1,12 +1,13 @@
 <?php
 
-use App\Http\Controllers\ActivityController;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ActivityController;
 use Symfony\Component\HttpKernel\Profiler\Profile;
 
 Route::get('/', function () {
@@ -91,6 +92,8 @@ Route::group(['middleware' => 'custom.auth'] , function(){
 
 
     // admin panel
-    Route::get('/admin' , [HomeController::class , 'admin']) ;
+    Route::get('/admin' , [AdminController::class , 'admin']) ;
+    Route::get('/admin/reports' , [AdminController::class , 'adminReports']) ;
+    Route::delete('/admin/delete/{post}' , [AdminController::class , 'adminDelete'])->where('post' , '[0-9]+') ;
 
 });

@@ -1,6 +1,6 @@
 @extends('layouts.user')
 
-@section('title' , 'Likes')
+@section('title' , 'Notifications')
 
 @section('CustomCss')
     <link rel="stylesheet" href="{{asset('css/activity.css')}}">
@@ -32,14 +32,20 @@
                 
             @else
                 @foreach ($notifications as $notification)
-                    <div class="activityGrpR">
-                       <p> {!! $notification['message'] !!} </p>
-                        <br>
-                        {{-- Title : {{$like->title}} --}}
-                        <div class="goBtn">
-                            <a href="/post/{{$notification['post_id']}}"><button class="goBtnR">Go</button></a>
+                    @if($notification['type'] == 'report')
+                        <div class="activityGrpR">
+                            {!! $notification['message'] !!}
                         </div>
-                    </div>
+                    @else
+                        <div class="activityGrpR">
+                            <p> {!! $notification['message'] !!} </p>
+                            <br>
+                            {{-- Title : {{$like->title}} --}}
+                            <div class="goBtn">
+                                <a href="/post/{{$notification['post_id']}}"><button class="goBtnR">Go</button></a>
+                            </div>
+                        </div>
+                    @endif
                 @endforeach
             @endunless
             

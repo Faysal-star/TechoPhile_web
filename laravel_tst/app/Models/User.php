@@ -9,6 +9,7 @@ use App\Models\Report;
 use App\Models\Comment;
 use App\Models\Profile;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\ReportNotification;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -78,5 +79,9 @@ class User extends Authenticatable
 
     public function reports(){
         return $this->hasMany(Report::class);
+    }
+
+    public function reportNotifications(){
+        return $this->hasMany(ReportNotification::class);
     }
 }

@@ -190,6 +190,9 @@ class PostController extends Controller
     }
 
     public function destroy(Post $post){
+        if(CustomAuth::user()->id != $post->user_id){
+            abort(403);
+        }
         $post->delete() ;
 
         return redirect()->back();

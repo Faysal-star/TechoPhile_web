@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Report;
+use App\Facades\CustomAuth;
 use Illuminate\Http\Request;
+use App\Models\ReportNotification;
 
 class HomeController extends Controller
 {
@@ -17,9 +20,5 @@ class HomeController extends Controller
                             ->orderBy('impact_factor', 'desc')
                             ->simplePaginate(10)
         ]);
-    }
-
-    public function admin(){
-        return view('admin') ;
     }
 }
