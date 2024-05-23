@@ -36,12 +36,15 @@
 						<div class="form-control">
 							<label for="room">Room</label>
 							<select name="room" id="room">
-								<option value="JavaScript">JavaScript</option>
+								{{-- <option value="JavaScript">JavaScript</option>
 								<option value="Python">Python</option>
 								<option value="PHP">PHP</option>
 								<option value="C#">C#</option>
 								<option value="Ruby">Ruby</option>
-								<option value="Java">Java</option>
+								<option value="Java">Java</option> --}}
+								@foreach ($rooms as $room)
+									<option value="{{$room->room_name}}">{{$room->room_name}}</option>
+								@endforeach
 							</select>
 						</div>
 						<button type="submit" class="btn">Join Chat</button>

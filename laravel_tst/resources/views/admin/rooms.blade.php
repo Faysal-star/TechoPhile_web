@@ -7,43 +7,52 @@
 @endsection
 
 @section('contents')
+
+@if($authUser->type == 'user')
+    <div class="activityMain">
+        <p>You Are Not Admin</p>
+    </div>  
+@else
+
 <div class="activityMain">
-    <h3>Activity Log </h3>
+    <h3>Admin Panel</h3>
     <div class="grps">
         <div class="leftActivity">
             <div class="activityGrpL">
-                <a href="/activity/likes">Likes</a>
-            </div>
-            <div class="activityGrpL">
-                <a href="/activity/dislikes">Dislikes</a>
+                <a href="/admin/reports">Reports</a>
             </div>
             <div class="activityGrpL active">
-                <a href="/activity/posts">Posts</a>
+                <a href="/admin/rooms">Chat Room</a>
             </div>
             <div class="activityGrpL">
-                <a href="/activity/notifications">Notifications</a>
+                <a href="/admin/hiring">Hiring</a>
             </div>
         </div>
         <div class="rightActivity">
-            @unless (count($posts) > 0)
+            <div class="addRoomDiv activityGrpR ">
+                <form action="/admin/addRoom" method="POST">
+                    @csrf
+                    <input type="text" name="room_name" placeholder="Enter Room Name" required>
+                    @error('room_name')
+                        <p>{{$message}}</p>
+                    @enderror
+                    <input type="submit" value="Add Room" class="addRoomBtn">
+                </form>
+            </div>
+
+            @unless (count($rooms) > 0)
                 <div class="activityGrpR">
-                    <p>No posts yet</p>
+                    <p>No rooms yet</p>
                 </div>
                 
             @else
-                @foreach ($posts as $post)
+                @foreach ($rooms as $room)
                     <div class="activityGrpR">
-                        You posted on {{$post->created_at->format('d M Y')}}
+                        Room : {{$room->room_name}}
                         <br>
-                        Title : {{$post->title}}
+                        Created at : {{$room->created_at->format('d M Y')}} 
                         <div class="editGrp">
-                            <button class="view">
-                                <a href="/post/{{$post->id}}">View</a>
-                            </button>
-                            <button class="editBtn">
-                                <a href="/post/{{$post->id}}/edit">Edit</a>
-                            </button>
-                            <form id="deleteForm" method="POST" action="/post/{{$post->id}}">
+                            <form id="deleteForm" method="POST" action="/admin/room/delete/{{$room->id}}">
                                 @csrf
                                 @method('DELETE')
                                 <button type="button" class="deleteBtn"  onclick="confirmDelete()">
@@ -71,4 +80,5 @@
     }
 </script>
 
+@endif
 @endsection

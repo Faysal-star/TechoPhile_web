@@ -15,7 +15,7 @@
 @else
 
 <div class="activityMain">
-    <h3>Activity Log </h3>
+    <h3>Admin Panel </h3>
     <div class="grps">
         <div class="leftActivity">
             <div class="activityGrpL active">
@@ -29,6 +29,7 @@
             </div>
         </div>
         <div class="rightActivity">
+
             @unless (count($reports) > 0)
                 <div class="activityGrpR">
                     <p>No reports yet</p>
@@ -48,10 +49,10 @@
                             <button class="view">
                                 <a href="/post/{{$report['post_id']}}">View</a>
                             </button>
-                            <form method="POST" action="/admin/delete/{{$report['post_id']}}">
+                            <form id="deleteForm" method="POST" action="/admin/delete/{{$report['post_id']}}">
                                 @csrf
                                 @method('DELETE')
-                                <button class="deleteBtn">
+                                <button type="button" class="deleteBtn"  onclick="confirmDelete()">
                                     Delete
                                 </button>
                             </form>
@@ -63,6 +64,18 @@
         </div>
     </div>
 </div>
+
+<script>
+    function confirmDelete() {
+        var userInput = prompt("Please type 'delete' to confirm:");
+
+        if (userInput === 'delete') {
+            document.getElementById('deleteForm').submit();
+        } else {
+            alert("Deletion cancelled. You did not type 'delete'.");
+        }
+    }
+</script>
 
 @endif
 @endsection

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Report;
 use App\Facades\CustomAuth;
+use App\Models\chatRoom;
 use Illuminate\Http\Request;
 use App\Models\ReportNotification;
 
@@ -54,6 +55,32 @@ class AdminController extends Controller
         $post->delete() ;
 
         return redirect('admin/reports') ;
+    }
+
+    public function adminRooms(){
+        $rooms = chatRoom::all() ;
+        // dd($rooms) ;
+        return view('admin.rooms', [
+            'rooms' => $rooms
+        ]) ;
+    }
+
+    public function adminRoomDelete(chatRoom $room){
+        $room->delete() ;
+        return redirect('admin/rooms') ;
+    }
+
+    public function addRoom(Request $request){
+
+        // dd($request->all()) ;
+        $attributes = $request->validate([
+            'room_name' => 'required'
+        ]) ;
+
+
+        chatRoom::create($attributes) ;
+
+        return redirect('admin/rooms') ;
     }
 
 }

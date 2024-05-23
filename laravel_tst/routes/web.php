@@ -8,6 +8,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\ChatController;
 use Symfony\Component\HttpKernel\Profiler\Profile;
 
 Route::get('/', function () {
@@ -57,9 +58,7 @@ Route::group(['middleware' => 'custom.auth'] , function(){
     Route::get('/post/{post}' , [PostController::class  , 'show'])->where('post' , '[0-9]+') ;
 
     // Chat
-    Route::get('/chatLogin', function(){
-        return view('chat.index') ;
-    });
+    Route::get('/chatLogin', [ChatController::class, 'chatLogin']);
     Route::get('/chatRoom', function(){
         return view('chat.chat') ;
     });
@@ -95,5 +94,7 @@ Route::group(['middleware' => 'custom.auth'] , function(){
     Route::get('/admin' , [AdminController::class , 'admin']) ;
     Route::get('/admin/reports' , [AdminController::class , 'adminReports']) ;
     Route::delete('/admin/delete/{post}' , [AdminController::class , 'adminDelete'])->where('post' , '[0-9]+') ;
+    Route::get('/admin/rooms' , [AdminController::class , 'adminRooms']) ;
+    Route::post('/admin/addRoom' , [AdminController::class , 'addRoom']) ;
 
 });
