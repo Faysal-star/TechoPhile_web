@@ -4,8 +4,7 @@ const { username , room } = Qs.parse(location.search, {
     ignoreQueryPrefix: true
 });
 
-
-const socket = io("localhost:3000");
+const socket = io("192.168.0.104:3000") || io("localhost:3000");
 
 // Join chatroom
 socket.emit('joinRoom', { username, room });
@@ -52,6 +51,39 @@ chatForm.addEventListener('submit', (e) => {
     e.target.elements.msg.value = '';
     e.target.elements.msg.focus();
 })
+
+// console.log("HOla");
+
+const uploadImgForm = document.getElementById('uploadImgForm');
+const imageInput = document.getElementById('imageInput');
+const uploadButton = document.getElementById('uploadButton');
+uploadButton.addEventListener('click', function(e) {
+    e.preventDefault();
+    console.log("added");
+    const formData = new FormData();
+    formData.append('image', imageInput.files[0]);
+
+    fetch('http://192.168.0.104:3000/uploadImg', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.imageUrl) {
+        socket.emit('chatMessage', `<img src="${data.imageUrl}" alt="image" class="chat-img" />`);
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+});
+
+document.addEventListener('click', function(event) {
+    if (event.target.classList.contains('chat-img')) {
+        const imageUrl = event.target.src;
+        window.open(imageUrl, '_blank');
+    }
+});
 
 function outputMessage(message) {
     const div = document.createElement('div');

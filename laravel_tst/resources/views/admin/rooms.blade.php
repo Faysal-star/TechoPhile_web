@@ -52,7 +52,7 @@
                         <br>
                         Created at : {{$room->created_at->format('d M Y')}} 
                         <div class="editGrp">
-                            <form id="deleteForm" method="POST" action="/admin/room/delete/{{$room->id}}">
+                            <form id="deleteForm" method="POST" action="/admin/deleteRoom/{{$room->id}}">
                                 @csrf
                                 @method('DELETE')
                                 <button type="button" class="deleteBtn"  onclick="confirmDelete()">

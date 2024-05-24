@@ -96,5 +96,6 @@ Route::group(['middleware' => 'custom.auth'] , function(){
     Route::delete('/admin/delete/{post}' , [AdminController::class , 'adminDelete'])->where('post' , '[0-9]+') ;
     Route::get('/admin/rooms' , [AdminController::class , 'adminRooms']) ;
     Route::post('/admin/addRoom' , [AdminController::class , 'addRoom']) ;
+    Route::delete('/admin/deleteRoom/{room}' , [AdminController::class , 'adminRoomDelete']) ;
 
 });

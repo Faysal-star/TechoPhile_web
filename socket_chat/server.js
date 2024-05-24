@@ -3,6 +3,8 @@ const express = require('express');
 const http = require('http');
 const socketio = require('socket.io');
 const mysql = require('mysql');
+const multer = require('multer');
+const fs = require('fs');
 const app = express();
 const server = http.createServer(app);
 // const io = socketio(server);
@@ -17,6 +19,29 @@ const {userJoin, getCurrentUser, userLeave, getRoomUsers} = require('./utils/use
 
 
 // app.use(express.static(path.join(__dirname, 'public')))
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+      cb(null, 'img/');
+    },
+    filename: (req, file, cb) => {
+      cb(null, Date.now() + path.extname(file.originalname));
+    }
+});
+
+const upload = multer({ storage: storage });
+
+app.use('/img', express.static(path.join(__dirname, 'img')));
+
+
+app.post('/uploadImg', upload.single('image'), (req, res) => {
+    if (!req.file) {
+      return res.status(400).send('No file uploaded.');
+    }
+    const imageUrl = `${req.protocol}://${req.get('host')}/img/${req.file.filename}`;
+    res.send({ imageUrl: imageUrl });
+});
+
 
 
 

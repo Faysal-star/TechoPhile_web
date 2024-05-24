@@ -42,9 +42,13 @@
 								<option value="C#">C#</option>
 								<option value="Ruby">Ruby</option>
 								<option value="Java">Java</option> --}}
-								@foreach ($rooms as $room)
-									<option value="{{$room->room_name}}">{{$room->room_name}}</option>
-								@endforeach
+								@unless (count($rooms) > 0)
+									<option value="testRoom">TestRoom</option>
+								@else
+									@foreach ($rooms as $room)
+										<option value="{{$room->room_name}}">{{$room->room_name}}</option>
+									@endforeach
+								@endunless
 							</select>
 						</div>
 						<button type="submit" class="btn">Join Chat</button>
