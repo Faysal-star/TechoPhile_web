@@ -38,6 +38,14 @@
           
         </div>
         <div class="chat-form-container">
+          <div class="uploadI">
+            <form id="uploadImgForm" enctype="multipart/form-data">
+              <input type="file" id="imageInput" name="image" accept="image/*" hidden> <br>
+              <button type="button" id="uploadButton">
+                <i class="fa-regular fa-image"></i>
+              </button>
+            </form>
+          </div>
           <form id="chat-form">
             <input
               id="msg"
@@ -51,13 +59,6 @@
         </div>
       </div>
       <div class="uploadC">
-        <div class="uploadI">
-          <form id="uploadImgForm" enctype="multipart/form-data">
-            <input type="file" id="imageInput" name="image" accept="image/*"/> <br>
-            <button type="button" id="uploadButton">Upload Image</button>
-          </form>
-        </div>
-
         <div class="uploadF">
           <input type="file" id="fileInput">
           <button id="upload" >Upload</button>

@@ -58,6 +58,10 @@ const uploadImgForm = document.getElementById('uploadImgForm');
 const imageInput = document.getElementById('imageInput');
 const uploadButton = document.getElementById('uploadButton');
 uploadButton.addEventListener('click', function(e) {
+    imageInput.click();
+});
+
+imageInput.addEventListener('change', function(e) {
     e.preventDefault();
     console.log("added");
     const formData = new FormData();
@@ -76,7 +80,9 @@ uploadButton.addEventListener('click', function(e) {
     .catch(error => {
       console.error('Error:', error);
     });
-});
+    imageInput.value = '';
+}
+);
 
 document.addEventListener('click', function(event) {
     if (event.target.classList.contains('chat-img')) {

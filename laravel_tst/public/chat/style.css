@@ -41,7 +41,8 @@ body {
 	justify-content: center;
 	align-items: center;
 	min-width: 100vw ;
-	min-height: 100vh;
+	height: 100vh;
+	overflow-y: hidden;
 }
 
 ul {
@@ -160,6 +161,29 @@ a {
 	bottom: 0;
 	height: 40px;
 	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.uploadI{
+	width : 40px ;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+
+#uploadButton{
+	background: none;
+	outline: none;
+	border: none;
+	font-size: 25px;
+	color: var(--text-light-blue);
+}
+
+#chat-form{
+	width : calc(100% - 40px);
 }
 
 .chat-form-container form {
