@@ -70,4 +70,4 @@
 
 ### PDF Chat Flow
 
-![1716827806998](image/README/1716827806998.png)
+![PDF Flow](image/README/AI_flow.png "PDF Chat Flow")
