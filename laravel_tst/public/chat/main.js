@@ -4,7 +4,8 @@ const { username , room } = Qs.parse(location.search, {
     ignoreQueryPrefix: true
 });
 
-const socket = io("192.168.0.104:3000") || io("localhost:3000");
+const socket = io("localhost:3000");
+// const socket = io("192.168.0.104:3000")
 
 // Join chatroom
 socket.emit('joinRoom', { username, room });
@@ -181,6 +182,6 @@ meetBtn.addEventListener('click', function(e){
     let userNameValue = userName.value;
     console.log(meetIdValue);
     // redirect window to /vid/id
-    window.location.href = `//192.168.0.104:3005/vid/${meetIdValue}/?name=${userNameValue}`;
+    window.open(`//192.168.0.104:3005/vid/${meetIdValue}/?name=${userNameValue}`, '_blank');
 })
 

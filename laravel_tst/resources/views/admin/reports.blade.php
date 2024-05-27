@@ -24,9 +24,6 @@
             <div class="activityGrpL">
                 <a href="/admin/rooms">Chat Room</a>
             </div>
-            <div class="activityGrpL">
-                <a href="/admin/hiring">Hiring</a>
-            </div>
         </div>
         <div class="rightActivity">
 

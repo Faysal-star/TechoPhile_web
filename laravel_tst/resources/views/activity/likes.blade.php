@@ -33,7 +33,7 @@
             @else
                 @foreach ($likes as $like)
                     <div class="activityGrpR">
-                        You disliked a post of {{$like->user->name}} on {{$like->created_at->format('d M Y')}}
+                        You liked a post of {{$like->user->name}} on {{$like->created_at->format('d M Y')}}
                         <br>
                         Title : {{$like->title}}
                         <div class="goBtn">

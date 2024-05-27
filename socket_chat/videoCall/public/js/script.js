@@ -6,7 +6,7 @@ const videoGrid = document.getElementById('video-grid')
 
 const myPeer = new Peer(undefined, {
   host: '/',
-  port: '3006'
+  port: '3008'
 })
 
 socket.on('room-users', ({ room, users }) => {

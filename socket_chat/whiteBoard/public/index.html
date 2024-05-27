@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whiteboard</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #whiteboard {
+            position: relative;
+        }
+
+        canvas {
+            border: 1px solid #000;
+            cursor: crosshair;
+        }
+
+        #controls {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+
+        input[type="range"] {
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="whiteboard">
+        <canvas id="canvas"></canvas>
+        <div id="controls">
+            <input type="color" id="colorPicker">
+            <input type="range" id="penWidth" min="1" max="10" value="2">
+            <button id="clearButton">Clear</button>
+            <button id="saveButton">Save</button>
+            <button id="eraserButton">Eraser</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -194,3 +194,49 @@ body{
 .profileP a:hover{
     color: var(--bg-carolina-blue);
 }
+
+.addRoomDiv{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.addRoomDiv form{
+    display: flex;
+    width: 80%;
+}
+.addRoomDiv input[type='text']{
+    width: 60%;
+    padding: 5px;
+    height: 40px;
+    background: #2641414d;
+    color: var(--bg-dark3);
+    border : none ;
+    border-bottom: 1.5px solid var(--bg-carolina-blue);
+    color: white;
+}
+
+.addRoomDiv input[type='text']:focus{
+    outline: none;
+}
+
+.addRoomDiv input[type='submit']{
+    width: 30%;
+    margin-left: 10px;
+    padding: 5px;
+    height: 40px;
+    background: var(--bg-carolina-blue);
+    color: var(--bg-dark3);
+    border: 1.5px solid var(--bg-carolina-blue);
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 300;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.addRoomDiv input[type='submit']:hover{
+    background: transparent;
+    color: var(--bg-carolina-blue);
+}

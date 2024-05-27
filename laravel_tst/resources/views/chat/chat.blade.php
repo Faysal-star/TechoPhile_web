@@ -67,9 +67,13 @@
         </div>
 
         <div class="meet">
+          <button id="whiteBoard">
+            <i class="fas fa-chalkboard"></i>
+            <a href="//localhost:3009" target="__blank">WhiteBoard</a>
+          </button>
           <button id="createMeet">
             <i class="fas fa-video"></i>
-            <a href="//192.168.0.104:3005/vid?name={{$authUser->name}}" target="__blank">Create Meeting</a>
+            <a href="//localhost:3005/vid?name={{$authUser->name}}" target="__blank">Create Meeting</a>
           </button>
           <input type="text" id="meetId" placeholder="Enter Meet id">
           <input type="hidden" id="userNameH" value={{$authUser->name}}>

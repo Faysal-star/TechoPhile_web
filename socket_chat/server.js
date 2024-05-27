@@ -51,8 +51,8 @@ const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'proj1',
-    port: 3307
+    database: 'techo_web',
+    port: 3306
 });
 
 db.connect((err) => {

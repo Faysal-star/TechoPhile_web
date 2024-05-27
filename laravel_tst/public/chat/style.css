@@ -263,7 +263,7 @@ a {
 	width: 100%;
 }
 
-#createMeet , #joinMeet{
+#createMeet , #joinMeet , #whiteBoard{
 	width: 100%;
 	padding: 5px;
 	height: 40px;
@@ -276,6 +276,18 @@ a {
 	font-weight: 300;
 	transition: 0.2s;
 	cursor: pointer;
+}
+#createMeet a, #joinMeet a, #whiteBoard a{
+	color: var(--bg-dark3);
+}
+
+#createMeet:hover , #joinMeet:hover , #whiteBoard:hover{
+	background: var(--bg-dark3);
+	color: var(--bg-carolina-blue);
+}
+
+#createMeet:hover a, #joinMeet:hover a, #whiteBoard:hover a{
+	color: var(--bg-carolina-blue);
 }
 
 #meetId{
