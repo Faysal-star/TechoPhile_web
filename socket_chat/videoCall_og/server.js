@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const server = require('http').Server(app)
-const io = require('socket.io')(server)
+const io = require('socket.io')(server , { cors: { origin: '*' } })
 const { v4: uuidV4 } = require('uuid')
 const {userJoin, getCurrentUser, userLeave, getRoomUsers} = require('./utils/user');
 
@@ -31,7 +31,6 @@ io.on('connection', socket => {
     socket.join(roomId)
     console.log(roomId, userId);
     socket.to(roomId).emit('user-connected', userId)
-    socket.to(roomId).emit('stream-connected', userId)
 
     io.to(roomId).emit('room-users', {
       room: roomId,

@@ -68,7 +68,7 @@ imageInput.addEventListener('change', function(e) {
     const formData = new FormData();
     formData.append('image', imageInput.files[0]);
 
-    fetch('http://192.168.0.104:3000/uploadImg', {
+    fetch('http://localhost:3000/uploadImg', {
       method: 'POST',
       body: formData
     })
@@ -182,6 +182,6 @@ meetBtn.addEventListener('click', function(e){
     let userNameValue = userName.value;
     console.log(meetIdValue);
     // redirect window to /vid/id
-    window.open(`//192.168.0.104:3005/vid/${meetIdValue}/?name=${userNameValue}`, '_blank');
+    window.open(`//localhost:3005/vid/${meetIdValue}/?name=${userNameValue}`, '_blank');
 })
 
