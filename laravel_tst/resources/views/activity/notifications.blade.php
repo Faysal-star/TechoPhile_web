@@ -27,7 +27,7 @@
         <div class="rightActivity">
             @unless (count($notifications) > 0)
                 <div class="activityGrpR">
-                    <p>No likes yet</p>
+                    <p>No notifications yet</p>
                 </div>
                 
             @else

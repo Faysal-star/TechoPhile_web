@@ -44,13 +44,13 @@ class ActivityController extends Controller
         $posts = CustomAuth::user()->post;
 
         $notifications = [];
+        $reportNotifications = CustomAuth::user()->reportNotifications()->orderBy('created_at')->get();
 
         foreach($posts as $post){
             $usersWhoLiked = $post->likes()->orderBy('created_at')->get();
             $usersWhoDisliked = $post->dislikes()->orderBy('created_at')->get();
             $usersWhoCommented = $post->comment()->orderBy('created_at')->get();
-            $reportNotifications = CustomAuth::user()->reportNotifications()->orderBy('created_at')->get();
-
+            
             // dd($usersWhoLiked)->toArray();
 
             foreach($usersWhoLiked as $user){
