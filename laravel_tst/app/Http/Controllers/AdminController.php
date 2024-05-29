@@ -6,6 +6,8 @@ use App\Models\Post;
 use App\Models\Report;
 use App\Facades\CustomAuth;
 use App\Models\chatRoom;
+use App\Models\Hiring;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\ReportNotification;
 
@@ -88,8 +90,61 @@ class AdminController extends Controller
         if(CustomAuth::user()->type != 'superAdmin'){
             return redirect('admin/reports') ;
         }
-        return view('admin.hiring') ;
+        $hirings = Hiring::all() ;
+        $jobs = [] ;
+
+        foreach($hirings as $hiring){
+            $jobs[] = [
+                'id' => $hiring->id,
+                'user_id' => $hiring->user_id,
+                'profile' => User::find($hiring->user_id)->profile->id,
+                'user' => User::find($hiring->user_id)->name,
+                'msg' => $hiring->msg,
+                'created_at' => $hiring->created_at
+            ] ;
+        }
+
+        // dd($jobs) ;
+
+        return view('admin.hiring' , [
+            'jobs' => $jobs
+        ]) ;
     }
 
+    public function adminHiringReject(Hiring $hiring){
+        if(CustomAuth::user()->type != 'superAdmin'){
+            return redirect('admin/reports') ;
+        }
+        $hiring->delete() ;
+        return redirect('admin/hiring') ;
+    }
 
+    public function adminHiringAccept(Hiring $hiring){
+        if(CustomAuth::user()->type != 'superAdmin'){
+            return redirect('admin/reports') ;
+        }
+        $user = User::find($hiring->user_id) ;
+        $user->type = 1 ;
+        $user->save() ;
+
+        $hiring->delete() ;
+
+        return redirect('admin/hiring') ;
+    }
+
+    public function adminApply(){
+        return view('admin.apply') ;
+    }
+
+    public function adminApplyStore(Request $request){
+        $attributes = $request->validate([
+            'msg' => 'required'
+        ]) ;
+
+        $attributes['user_id'] = CustomAuth::user()->id ;
+
+        Hiring::create($attributes) ;
+
+        return redirect('profile/' . CustomAuth::user()->profile->id);
+    }
 }

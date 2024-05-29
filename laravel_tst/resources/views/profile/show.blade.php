@@ -26,10 +26,15 @@
             </div>
             <div class="edit">
                 @if($authUser->id == $profile->user_id)
-                    @if($authUser->type == 'admin')
+                    @if($authUser->type == 'admin' || $authUser->type == 'superAdmin')
                         <a href="/admin"><button class="editBtn">
-                            <i class="fas fa-user-edit"></i>
+                            <i class="fa-solid fa-user-tie"></i>
                             Admin Panel
+                        </button></a>
+                    @else
+                        <a href='/admin/apply'><button class="editBtn">
+                            <i class="fa-solid fa-user-tie"></i>
+                            Job
                         </button></a>
                     @endif
                     <a href="/profile/{{$profile->id}}/edit"><button class="editBtn">

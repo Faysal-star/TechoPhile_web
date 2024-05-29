@@ -15,53 +15,52 @@
 @else
 
 <div class="activityMain">
-    <h3>Admin Panel</h3>
+    <h3>Admin Panel </h3>
     <div class="grps">
         <div class="leftActivity">
             <div class="activityGrpL">
                 <a href="/admin/reports">Reports</a>
             </div>
-            <div class="activityGrpL active">
+            <div class="activityGrpL">
                 <a href="/admin/rooms">Chat Room</a>
             </div>
             @if($authUser->type == 'superAdmin')
-                <div class="activityGrpL">
+                <div class="activityGrpL active">
                     <a href="/admin/hiring">Hiring</a>
                 </div>
             @endif
         </div>
         <div class="rightActivity">
-            <div class="addRoomDiv activityGrpR ">
-                <form action="/admin/addRoom" method="POST">
-                    @csrf
-                    <input type="text" name="room_name" placeholder="Enter Room Name" required>
-                    @error('room_name')
-                        <p>{{$message}}</p>
-                    @enderror
-                    <input type="submit" value="Add Room" class="addRoomBtn">
-                </form>
-            </div>
 
-            @unless (count($rooms) > 0)
+            @unless (count($jobs) > 0)
                 <div class="activityGrpR">
-                    <p>No rooms yet</p>
+                    <p>No Job Applications yet</p>
                 </div>
                 
             @else
-                @foreach ($rooms as $room)
+                @foreach ($jobs as $job)
                     <div class="activityGrpR">
-                        Room : {{$room->room_name}}
+                        {{$job['user']}} Applied for the job on {{$job['created_at']->format('d M Y')}}
                         <br>
-                        Created at : {{$room->created_at->format('d M Y')}} 
+                        Application : {{$job['msg']}}
                         <div class="editGrp">
-                            <form id="deleteForm" method="POST" action="/admin/deleteRoom/{{$room->id}}">
+                            <button class="view">
+                                <a href="/profile/{{$job['profile']}}">View</a>
+                            </button>
+                            <form id="approveForm" method="POST" action="/admin/approve/{{$job['id']}}">
+                                @csrf
+                                <button type="button" class="approveBtn" onclick="confirmApprove()">
+                                    Approve
+                                </button>
+                            </form>
+                            <form id="deleteForm" method="POST" action="/admin/reject/{{$job['id']}}">
                                 @csrf
                                 @method('DELETE')
                                 <button type="button" class="deleteBtn"  onclick="confirmDelete()">
-                                    Delete
+                                    Reject
                                 </button>
                             </form>
-                        </div>
+                        </div> 
                     </div>
                 @endforeach
             @endunless
@@ -71,6 +70,15 @@
 </div>
 
 <script>
+    function confirmApprove() {
+        var userInput = prompt("Please type 'approve' to confirm:");
+
+        if (userInput === 'approve') {
+            document.getElementById('approveForm').submit();
+        } else {
+            alert("Cancled. You did not type 'approve'");
+        }
+    }
     function confirmDelete() {
         var userInput = prompt("Please type 'delete' to confirm:");
 

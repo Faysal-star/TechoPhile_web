@@ -24,9 +24,11 @@
             <div class="activityGrpL">
                 <a href="/admin/rooms">Chat Room</a>
             </div>
-            <div class="activityGrpL">
-                <a href="/admin/hiring">Hiring</a>
-            </div>
+            @if($authUser->type == 'superAdmin')
+                <div class="activityGrpL">
+                    <a href="/admin/hiring">Hiring</a>
+                </div>
+            @endif
         </div>
         <div class="rightActivity">
 

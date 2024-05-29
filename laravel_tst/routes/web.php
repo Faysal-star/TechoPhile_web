@@ -98,5 +98,9 @@ Route::group(['middleware' => 'custom.auth'] , function(){
     Route::post('/admin/addRoom' , [AdminController::class , 'addRoom']) ;
     Route::delete('/admin/deleteRoom/{room}' , [AdminController::class , 'adminRoomDelete']) ;
     Route::get('/admin/hiring' , [AdminController::class , 'hiring']) ;
+    Route::post('/admin/approve/{hiring}' , [AdminController::class , 'adminHiringAccept'])->where('hiring' , '[0-9]+') ;
+    Route::delete('/admin/reject/{hiring}' , [AdminController::class , 'adminHiringReject'])->where('hiring' , '[0-9]+') ;
+    Route::get('/admin/apply' , [AdminController::class , 'adminApply']) ;
+    Route::post('/admin/apply' , [AdminController::class , 'adminApplyStore']) ;
 
 });
