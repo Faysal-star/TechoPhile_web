@@ -10,13 +10,13 @@ const server = http.createServer(app);
 // const io = socketio(server);
 const io = socketio(server, {
     cors: {
-      origin: "*", // Adjust the origin to match your Laravel application's domain
-      methods: ["GET", "POST"] // You can add more HTTP methods if needed
+      origin: "*",
+      methods: ["GET", "POST"] 
     }
 });
 const formatMessage = require('./utils/messages');
 const {userJoin, getCurrentUser, userLeave, getRoomUsers} = require('./utils/users');
-
+const {encryptMessage, decryptMessage} = require('./utils/secure');
 
 // app.use(express.static(path.join(__dirname, 'public')))
 
@@ -96,8 +96,8 @@ io.on('connection', socket => {
                 throw err;
             }
             result.forEach((msg) => {
-                // io.emit('message', formatMessage(msg.username, msg.msg));
-                if(user.room == msg.room) socket.emit('message', formatMessage(msg.username, msg.msg, msg.time));
+                const decryptedMsg = decryptMessage(msg.msg);
+                if(user.room == msg.room) socket.emit('message', formatMessage(msg.username, decryptedMsg, msg.time));
             });
         });
        
@@ -111,7 +111,9 @@ io.on('connection', socket => {
         io.to(user.room).emit('message', formatMessage(user.username,msg));
 
         // save to database
-        db.query('INSERT INTO msg(username, msg, time, room) VALUES(?, ?, ?, ?)', [user.username, msg, formatMessage(user.username, msg).time, user.room], (err, result) => {
+        const encryptedMsg = encryptMessage(msg);
+
+        db.query('INSERT INTO msg(username, msg, time, room) VALUES(?, ?, ?, ?)', [user.username, encryptedMsg, formatMessage(user.username, msg).time, user.room], (err, result) => {
             if(err){
                 throw err;
             }

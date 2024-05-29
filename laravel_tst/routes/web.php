@@ -97,5 +97,6 @@ Route::group(['middleware' => 'custom.auth'] , function(){
     Route::get('/admin/rooms' , [AdminController::class , 'adminRooms']) ;
     Route::post('/admin/addRoom' , [AdminController::class , 'addRoom']) ;
     Route::delete('/admin/deleteRoom/{room}' , [AdminController::class , 'adminRoomDelete']) ;
+    Route::get('/admin/hiring' , [AdminController::class , 'hiring']) ;
 
 });

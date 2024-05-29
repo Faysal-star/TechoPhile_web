@@ -83,4 +83,13 @@ class AdminController extends Controller
         return redirect('admin/rooms') ;
     }
 
+    public function hiring(){
+        // dd(CustomAuth::user()->type) ;
+        if(CustomAuth::user()->type != 'superAdmin'){
+            return redirect('admin/reports') ;
+        }
+        return view('admin.hiring') ;
+    }
+
+
 }
