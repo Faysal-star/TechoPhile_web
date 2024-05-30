@@ -73,6 +73,9 @@ class PostController extends Controller
         ]);
 
         $attributes['user_id'] = CustomAuth::user()->id;
+        
+        $initial = rand(1, 100);
+        $attributes['impact_factor'] = $initial;
 
         Post::create($attributes) ;
 
@@ -117,7 +120,8 @@ class PostController extends Controller
         $elapsed_day = $created_at->diffInDays(now());
 
         // dd($like_count, $dislike_count, $comments_count, $elasped_day);
-        $impact_factor = 1 + $like_count * 70 + $comments_count * 70 - $elapsed_day * 2 - $dislike_count * 38;
+        $initial = rand(1, 100);
+        $impact_factor = $initial + $like_count * 70 + $comments_count * 70 - $elapsed_day * 2 - $dislike_count * 38;
         $post->update(['impact_factor' => $impact_factor]);
         // dd($impact_factor);
 
@@ -143,7 +147,9 @@ class PostController extends Controller
         $elapsed_day = $created_at->diffInDays(now());
 
         // dd($like_count, $dislike_count, $comments_count, $elasped_day);
-        $impact_factor = 1 + $like_count * 70 + $comments_count * 70 - $elapsed_day * 2 - $dislike_count * 38;
+        // $initial random number between 1 and 100
+        $initial = rand(1, 100);
+        $impact_factor = $initial + $like_count * 70 + $comments_count * 70 - $elapsed_day * 2 - $dislike_count * 38;
         $post->update(['impact_factor' => $impact_factor]);
 
         return back();

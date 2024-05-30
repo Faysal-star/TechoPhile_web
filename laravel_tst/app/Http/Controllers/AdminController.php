@@ -103,11 +103,14 @@ class AdminController extends Controller
                 'created_at' => $hiring->created_at
             ] ;
         }
+        // Existing admins
+        $admins = User::where('type', 1)->get() ;
 
         // dd($jobs) ;
 
         return view('admin.hiring' , [
-            'jobs' => $jobs
+            'jobs' => $jobs,
+            'admins' => $admins
         ]) ;
     }
 
@@ -146,5 +149,16 @@ class AdminController extends Controller
         Hiring::create($attributes) ;
 
         return redirect('profile/' . CustomAuth::user()->profile->id);
+    }
+
+    public function adminRemove(User $user){
+        if(CustomAuth::user()->type != 'superAdmin'){
+            return redirect('admin/reports') ;
+        }
+
+        $user->type = 0 ;
+        $user->save() ;
+        // dd($user) ;
+        return redirect('admin/apply') ;
     }
 }

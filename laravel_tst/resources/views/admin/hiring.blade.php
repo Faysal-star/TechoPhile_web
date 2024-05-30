@@ -31,6 +31,29 @@
             @endif
         </div>
         <div class="rightActivity">
+            @unless(count($admins) > 0)
+                <div class="activityGrpR">
+                    <p>No Admins yet</p>
+                </div>
+            @else
+                @foreach ($admins as $admin)
+                    <div class="activityGrpR">
+                        {{$admin->name}} is an Admin
+                        <div class="editGrp">
+                            <button class="view">
+                                <a href="/profile/{{$admin->id}}">View</a>
+                            </button>
+                            <form id="removeForm" method="POST" action="/admin/remove/{{$admin->id}}">
+                                @csrf
+                                @method('DELETE')
+                                <button type="button" class="deleteBtn" onclick="confirmDelete2()">
+                                    Remove
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                @endforeach
+            @endunless
 
             @unless (count($jobs) > 0)
                 <div class="activityGrpR">
@@ -87,6 +110,16 @@
         } else {
             alert("Deletion cancelled. You did not type 'delete'.");
         }
+    }
+    function confirmDelete2(){
+        var userInput = prompt("Please type 'delete' to confirm:");
+
+        if (userInput === 'delete') {
+            document.getElementById('removeForm').submit();
+        } else {
+            alert("Deletion cancelled. You did not type 'delete'.");
+        }
+
     }
 </script>
 

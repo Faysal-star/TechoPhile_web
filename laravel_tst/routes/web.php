@@ -102,5 +102,6 @@ Route::group(['middleware' => 'custom.auth'] , function(){
     Route::delete('/admin/reject/{hiring}' , [AdminController::class , 'adminHiringReject'])->where('hiring' , '[0-9]+') ;
     Route::get('/admin/apply' , [AdminController::class , 'adminApply']) ;
     Route::post('/admin/apply' , [AdminController::class , 'adminApplyStore']) ;
+    Route::delete('/admin/remove/{user}' , [AdminController::class , 'adminRemove'])->where('user' , '[0-9]+') ;
 
 });
